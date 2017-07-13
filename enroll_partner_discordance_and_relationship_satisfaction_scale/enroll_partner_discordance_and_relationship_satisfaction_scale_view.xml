@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="enrollment_partnerdiscordance_tree_view" model="ir.ui.view">
+        <field name="name">enrollment.partnerdiscordance.tree</field>
+        <field name="model">enrollment.partnerdiscordance</field>
+        <field name="arch" type="xml">
+        <tree string="Partner Discordance and Relationship Satisfaction Scale">
+            <field name="enrollment_id"/>
+            <field name="visitdate"/>
+            <field name="difficult"/>
+            <field name="challenge"/>
+            <field name="managing"/>
+            <field name="discussdivorce"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="enrollment_partnerdiscordance_form_view" model="ir.ui.view">
+        <field name="name">enrollment.partnerdiscordance.form</field>
+        <field name="model">enrollment.partnerdiscordance</field>
+        <field name="arch" type="xml">
+        	<form string="Partner Discordance and Relationship Satisfaction Scale" version="8.0">
+        		<sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="sceening_id"/>
+                        <field name="enrollment_id"/>
+                        <field name="visitdate"/>
+                    </group>
+        			<group string="Discordance (The interviewer should provide the response options for each question)">
+        				<field name="difficult"/>
+	            		<field name="challenge"/>
+	            		<field name="managing"/>
+	        		</group>
+		        	<group string="Relationship Satisfaction Scale">
+		        		<field name="discussdivorce"/>
+		        		<field name="leave"/>
+			            <field name="goingwell"/>
+			            <field name="confide"/>
+			            <field name="everregret"/>
+			            <field name="quarrel"/>
+			            <field name="annoy"/>
+			            <field name="affectionate"/>
+		        	</group>
+
+                    <div>
+                        <h4>The boxes on the following line represent different degrees of happiness in your partnership. The middle point, “happy”, represents the degree of happiness of most partnerships. Please mark the box which best describes the degree of happiness, all things considered of your partnership.</h4>
+                    </div>
+	        		<group>
+	        			<field name="degree_of_happiness"/>		            	
+	        		</group>
+
+                    <group>
+		        	    <field name="ratefeel"/>
+		           	</group>
+		            <group string="This section deals with feelings you might have if you were to acquire HIV, despite taking the anti-HIV medications. We would like to know what you think regardless of whether these things would actually happen. Please tell me if you strongly agree; agree; disagree; or strongly disagree with the following four statements.">
+		            	<field name="anylength"/>
+		            	<field name="allIcan"/>
+		            	<field name="myfairshare"/>
+		            	<field name="muchmore"/>
+		            	<field name="anymore"/>
+		            	<field name="nomore"/>
+		            </group>           
+        		</sheet>
+        	</form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_enrollment_partnerdiscordance_search">
+            <field name="name">Partner Discordance and Relationship Scales</field>
+            <field name="model">enrollment.partnerdiscordance</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="enrollment_partnerdiscordance_form_action" model="ir.actions.act_window"> 
+            <field name="name">Partner Discordance and Relationship Scales</field>
+            <field name="res_model">enrollment.partnerdiscordance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="enrollment_partnerdiscordance_form_view_1" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='enrollment']" position="inside">
+                        <button name="%(enrollment_partnerdiscordance_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Partner Discordance and Relationship Scales" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

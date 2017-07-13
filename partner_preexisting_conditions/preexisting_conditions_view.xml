@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_preexisting_conditions_tree" model="ir.ui.view">
+        <field name="name">preexisting.conditions.tree</field>
+        <field name="model">preexisting.conditions</field>
+        <field name="arch" type="xml">
+        <tree string="Partner Pre-existing Conditions">
+            <field name="dateofdiagnosis"/>
+            <field name="conditionongoing"/>
+            <field name="initials"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="view_preexisting_conditions_form" model="ir.ui.view">
+	        <field name="name">preexisting.conditions.form</field>
+	        <field name="model">preexisting.conditions</field>
+	        <field name="arch" type="xml">
+	        	<form string="Partner Pre-existing Conditions" version="8.0">
+	        		<sheet string='Partner Pre-existing Conditions'>
+	        			<separator string="Partner Pre-existing Conditions"/>
+	        			<div class='row mt32' style="col-xs-12; border: 1px solid #568eff;">
+	        				<div class="col-xs-3">
+					        	<strong><span>Screening ID:</span></strong><field name="partner_id"/>
+					    	</div>
+					    	<div class="col-xs-3">
+					    		<strong><span>Visit Date:</span></strong><field name="visitdate"/>
+					    	</div>
+				        </div>
+				        <br/><br/>
+
+				        <div class='row mt32' style="col-xs-12; border: 1px solid #568eff;">
+	        				<div class="col-xs-4"><strong>Partner Pre-existing Conditions | </strong></div>
+					    	<div class="col-xs-4"><strong>No pre-existing conditions |</strong></div>
+					    	<div class='col-xs-2'><field name='no_preexisting_conditions'/></div>
+					    	<div class='col-xs-2'><strong>End of form</strong></div>
+				        </div>
+				        
+				        <!--The Record of First Diagnosis Starts here-->
+				        <div>
+				        	<!--Row 1-->
+				        	<div class='row mt32' style="col-xs-12; no-border">
+				        		<div class='col-xs-6'><strong>1. Diagnosis</strong></div>
+				        		<div class='col-xs-6'><field name='diagnosis1'/></div>
+				        	</div>
+				        	<!--Row 2-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>a. Date of Diagnosis</div>
+				            	<div class='col-xs-6'><field name="dateofdiagnosis"/></div>
+				        	</div>
+				        	<!--Row 3-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>b. Is condition ongoing?</div>
+				            	<div class='col-xs-6'><field name="conditionongoing"/></div>
+				        	</div>
+				        	<!--Row 4-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>c. Initials/Date</div>
+				            	<div class='col-xs-6'><field name="initials"/></div>
+				        	</div>
+				        </div>
+
+				        <!--The Record of Second Diagnosis Starts here-->
+				        <div>
+				        	<!--Row 1-->
+				        	<div class='row mt32' style="col-xs-12; no-border">
+				        		<div class='col-xs-6'><strong>2. Diagnosis</strong></div>
+				        		<div class='col-xs-6'><field name='diagnosis2'/></div>
+				        	</div>
+				        	<!--Row 2-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>a. Date of Diagnosis</div>
+				            	<div class='col-xs-6'><field name="dateofdiagnosis2"/></div>
+				        	</div>
+				        	<!--Row 3-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>b. Is condition ongoing?</div>
+				            	<div class='col-xs-6'><field name="conditionongoing2"/></div>
+				        	</div>
+				        	<!--Row 4-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>c. Initials/Date</div>
+				            	<div class='col-xs-6'><field name="initials2"/></div>
+				        	</div>
+				        </div>
+
+				        <!--The Record of Third Diagnosis Starts here-->
+				        <div>
+				        	<!--Row 1-->
+				        	<div class='row mt32' style="col-xs-12; no-border">
+				        		<div class='col-xs-6'><strong>3. Diagnosis</strong></div>
+				        		<div class='col-xs-6'><field name='diagnosis3'/></div>
+				        	</div>
+				        	<!--Row 2-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>a. Date of Diagnosis</div>
+				            	<div class='col-xs-6'><field name="dateofdiagnosis3"/></div>
+				        	</div>
+				        	<!--Row 3-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>b. Is condition ongoing?</div>
+				            	<div class='col-xs-6'><field name="conditionongoing3"/></div>
+				        	</div>
+				        	<!--Row 4-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>c. Initials/Date</div>
+				            	<div class='col-xs-6'><field name="initials3"/></div>
+				        	</div>
+				        </div>
+
+				        <!--The Record of Fourth Diagnosis Starts here-->
+				        <div>
+				        	<!--Row 1-->
+				        	<div class='row mt32' style="col-xs-12; no-border">
+				        		<div class='col-xs-6'><strong>4. Diagnosis</strong></div>
+				        		<div class='col-xs-6'><field name='diagnosis4'/></div>
+				        	</div>
+				        	<!--Row 2-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>a. Date of Diagnosis</div>
+				            	<div class='col-xs-6'><field name="dateofdiagnosis4"/></div>
+				        	</div>
+				        	<!--Row 3-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>b. Is condition ongoing?</div>
+				            	<div class='col-xs-6'><field name="conditionongoing4"/></div>
+				        	</div>
+				        	<!--Row 4-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>c. Initials/Date</div>
+				            	<div class='col-xs-6'><field name="initials4"/></div>
+				        	</div>
+				        </div>
+
+				        <!--The Record of Fifth Diagnosis Starts here-->
+				        <div>
+				        	<!--Row 1-->
+				        	<div class='row mt32' style="col-xs-12; no-border">
+				        		<div class='col-xs-6'><strong>5. Diagnosis</strong></div>
+				        		<div class='col-xs-6'><field name='diagnosis5'/></div>
+				        	</div>
+				        	<!--Row 2-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>a. Date of Diagnosis</div>
+				            	<div class='col-xs-6'><field name="dateofdiagnosis5"/></div>
+				        	</div>
+				        	<!--Row 3-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>b. Is condition ongoing?</div>
+				            	<div class='col-xs-6'><field name="conditionongoing5"/></div>
+				        	</div>
+				        	<!--Row 4-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>c. Initials/Date</div>
+				            	<div class='col-xs-6'><field name="initials5"/></div>
+				        	</div>
+				        </div>
+
+				        <!--The Record of Sixth Diagnosis Starts here-->
+				        <div>
+				        	<!--Row 1-->
+				        	<div class='row mt32' style="col-xs-12; no-border">
+				        		<div class='col-xs-6'><strong>6. Diagnosis</strong></div>
+				        		<div class='col-xs-6'><field name='diagnosis6'/></div>
+				        	</div>
+				        	<!--Row 2-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>a. Date of Diagnosis</div>
+				            	<div class='col-xs-6'><field name="dateofdiagnosis6"/></div>
+				        	</div>
+				        	<!--Row 3-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>b. Is condition ongoing?</div>
+				            	<div class='col-xs-6'><field name="conditionongoing6"/></div>
+				        	</div>
+				        	<!--Row 4-->
+				        	<div class='row mt32' style='col-xs-12'>
+				            	<div class='col-xs-6'>c. Initials/Date</div>
+				            	<div class='col-xs-6'><field name="initials6"/></div>
+				        	</div>
+				        </div>
+				        
+	        			<newline/>
+	        		</sheet>
+	        	</form>
+        	</field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_preexisting_conditions_search">
+            <field name="name">Partner Pre-existing Conditions</field>
+            <field name="model">preexisting.conditions</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_preexisting_conditions_form">
+            <field name="name">Partner Pre-existing Conditions</field>
+            <field name="res_model">preexisting.conditions</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_preexisting_conditions_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='screening']" position="inside">
+                        <button name="%(action_preexisting_conditions_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Partner Pre-existing Conditions" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

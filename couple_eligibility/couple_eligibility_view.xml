@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_couple_eligibility_tree" model="ir.ui.view">
+        <field name="name">couple.eligibility.tree</field>
+        <field name="model">couple.eligibility</field>
+        <field name="arch" type="xml">
+        <tree string="The PROJECT Study Couple Eligibility Worksheet">
+            <field name="visitdate"/>
+            <field name="infectedpartner"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="view_couple_eligibility_form" model="ir.ui.view">
+        <field name="name">couple.eligibility.form</field>
+        <field name="model">couple.eligibility</field>
+        <field name="arch" type="xml">
+        <form string="The PROJECT Study Couple Eligibility Worksheet" version="8.0">
+        <sheet>
+        <separator string="The PROJECT Study Couple Eligibility Worksheet"/>
+        <group>
+        <field name="partner_id"/>
+        <field name="sceening_id"/>
+        <field name="visitdate"/>
+        <field name="indexgender"/>
+        <field name="partnergender"/>
+        </group>
+        <group string="1. Risk Scoring Tool">
+            <field name="ageof"/>
+            <field name="numberof"/>
+            <field name="circumcisionstatus" />
+            <field name="marriedand" />
+            <field name="unprotectedsex" />
+            <field name="plasmaviral" />
+            <field name="total"/>
+        </group>
+        <group>
+            <field name="infectedpartner"/>
+        </group>
+        <group>
+            <field name="couple_eligibility_status"/>
+            <field name="whynotenroll"/>
+        </group> 
+        <group string="4. Reasons for Ineligibility">
+            <field name="indexparticipant"/>
+            <field name="Partnerparticipant"/>
+            <field name="participantdoes"/>
+            <field name="hashepatitis"/>
+            <field name="ispregnant"/>
+            <field name="tomaintain"/>
+            <field name="Participantshave"/>
+            <field name="otherreason"/>
+        </group>
+        <newline />
+        </sheet>
+        </form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_couple_eligibility_search">
+            <field name="name">The PROJECT Study Couple Eligibility Worksheet</field>
+            <field name="model">couple.eligibility</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_couple_eligibility_form">
+            <field name="name">The PROJECT Study Couple Eligibility Worksheet</field>
+            <field name="res_model">couple.eligibility</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_couple_eligibility_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='screening']" position="inside">
+                        <button name="%(action_couple_eligibility_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="The Project Study Couple Eligibility Summary" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

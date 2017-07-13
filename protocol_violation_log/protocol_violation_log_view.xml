@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="viewlogs_protocolviolation_tree" model="ir.ui.view">
+        <field name="name">logs.protocolviolation.tree</field>
+        <field name="model">logs.protocolviolation</field>
+        <field name="arch" type="xml">
+        <tree string="Protocol Violation Log ">
+            <field name="startdate"/>
+            <field name="sitedate"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="viewlogs_protocolviolation_form" model="ir.ui.view">
+        <field name="name">logs.protocolviolation.form</field>
+        <field name="model">logs.protocolviolation</field>
+        <field name="arch" type="xml">
+        <form string="Protocol Violation Log " version="8.0">
+        <sheet>
+        <separator string="Protocol Violation Log "/>
+        <group>
+        <field name="partner_id"/>
+        <field name="sceening_id"/>
+        <field name="visitdate"/>
+        </group>
+        <group string="Visit Month associated with the violation:">
+            <field name="startdate"/>
+            <field name="sitedate"/>
+            <field name="briefdescription"/>
+            <field name="requirereporting"/>
+            <field name="why_not"/>
+            <field name="datereported"/>
+            <field name="eventdate"/>
+        </group>
+        <group string="5. Category of event: (Mark all that apply)">
+            <field name="breachof"/>
+            <field name="safetyrelated"/>
+            <field name="informed"/>
+            <field name="eligibility"/>
+            <field name="failureto"/>
+            <field name="useof"/>
+            <field name="study"/>
+            <field name="others"/>
+        </group>    
+        <group>
+            <field name="whatsteps"/>
+            <field name="occurrences"/>
+            <field name="additional"/>
+        </group>
+        <newline />
+        </sheet>
+        </form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_logs_protocolviolation_search">
+            <field name="name">Protocol Violation Log</field>
+            <field name="model">logs.protocolviolation</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="actionlogs_protocolviolation_form">
+            <field name="name">Protocol Violation Log</field>
+            <field name="res_model">logs.protocolviolation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="viewlogs_protocolviolation_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='logs']" position="inside">
+                        <button name="%(actionlogs_protocolviolation_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Protocol Violation Log" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

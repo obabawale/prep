@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_partner_screening_tree" model="ir.ui.view">
+        <field name="name">partner.screening.tree</field>
+        <field name="model">partner.screening</field>
+        <field name="arch" type="xml">
+        <tree string="Partner Screening Eligibility Criteria">
+            <field name="theparticipant"/>
+            <field name="participantwilling"/>
+            <field name="informedconsent"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="view_partner_screening_form" model="ir.ui.view">
+        <field name="name">partner.screening.form</field>
+        <field name="model">partner.screening</field>
+        <field name="arch" type="xml">
+        <form string="Partner Screening Eligibility Criteria" version="8.0">
+        <sheet>
+        <separator string="Partner Screening Eligibility Criteria"/>
+        <group>
+        <field name="sceening_id"/>
+        <field name="partner_id"/>
+        <field name="visitdate"/>
+        </group>
+        <group string="Part 1: Inclusion Criteria Items 1-10 must be answered YES for participant to be eligible.">
+            <field name="theparticipant"/>
+            <field name="participantwilling"/>
+            <field name="informedconsent"/>
+            <field name="locatorinformation"/>
+        </group>
+        <group>
+            <field name="clinicalevaluations"/>
+        </group>
+        <group string="Items 5 and 6 are interviewer-administered questions, and should be read aloud directly as written.">
+            <field name="undergoclinical"/>
+            <field name="vaginaland"/>
+            <field name="HIVnegative"/>
+            <field name="creatinineclearance"/>
+            <field name="serumcreatinine"/>
+            <field name="infectedwith"/>
+        </group>   
+        <group string="Part 2: Exclusion Criteria Items 11-14 must be answered NO for participant to be eligible.">
+            <field name="currentlyenrolled"/>
+            <field name="conditionthat"/>
+        </group>
+        <group string="Items 13-14 are for female participants only.">
+            <field name="currentlypregnant"/>
+            <field name="breastfeeding"/>
+        </group>
+        <separator string="Considerations: Per protocol, individuals with active and significant medical problems should be enrolled at the discretion of the clinical investigator. Prior to enrollment, contact the Coordinating Center for discussion. If any of the following items are marked “yes,” document extensively in comments."/>
+        <group string="15. Diagnosed with any of the following? Mark all that apply. See complete descriptions on reverse.">
+            <field name="serious"/>
+            <field name="cardiac"/>
+            <field name="lung"/>
+            <field name="hypoglycemic"/>
+            <field name="malignancy"/>
+        </group>
+        <group>
+            <field name="bonefractures"/>
+        </group>
+        <group string="17. Receiving any of the following therapies?  Mark all that apply. See complete descriptions on reverse.">
+            <field name="mayinhibit"/>
+            <field name="nephrotoxic"/>
+            <field name="immunetherapies"/>
+            <field name="retroviraltherapy"/>
+            <field name="investigational"/>
+        </group>
+        <group>
+            <field name="criteriaabove"/>
+        </group>
+        <group>
+            <field name="comm"/>
+        </group>
+        <newline />
+        </sheet>
+        </form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_partner_screening_search">
+            <field name="name">Partner Screening Eligibility Criteria</field>
+            <field name="model">partner.screening</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_partner_screening_form">
+            <field name="name">Partner Screening Eligibility Criteria</field>
+            <field name="res_model">partner.screening</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_partner_screening_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='screening']" position="inside">
+                        <button name="%(action_partner_screening_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Partner Screening Eligibility Criteria" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

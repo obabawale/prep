@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+           <record id="custom_view_fields_form" model="ir.ui.view">         
+           <field name="model">res.partner</field>         
+           <field name="inherit_id" ref="base.view_partner_form"/>
+           <field name="type">form</field>         
+           <field name="arch" type="xml">  
+          <xpath expr="/form//field[@name='email']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='function']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='title']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='website']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>     
+           <xpath expr="/form//field[@name='phone']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='fax']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='parent_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='zip']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='mobile']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//page[@name='internal_notes']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//page[@name='sales_purchases']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//page[@name='sales_purchases']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='is_company']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='category_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='street']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='street2']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='image']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='city']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='state_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='country_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//div[@name='buttons']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+           </xpath>
+           <xpath expr="/form//field[@name='name']" position="before">
+                    <label for="site"/>
+                    <field name="site" string="Site"/>
+           </xpath>
+           <xpath expr="/form//field[@name='name']" position="before">
+                    <label for="study"/>
+                    <field name="study" string="Study"/>
+           </xpath>
+           <xpath expr="/form//field[@name='name']" position="before">
+                    <label for="screeningid"/>
+           </xpath>
+           <xpath expr="/form//field[@name='phone']" position="before">
+                    <field name="patsite" string="Site"/>
+           </xpath>
+           <xpath expr="/form//field[@name='phone']" position="before">
+                    <field name="patstudy" string="Study"/>
+           </xpath>
+           <xpath expr="/form//field[@name='phone']" position="before">
+                    <field name="couple" string="Couple"/>
+           </xpath>
+           <xpath expr="/form//field[@name='phone']" position="before">
+                    <field name="ips" string="I/P"/>
+           </xpath>
+           <xpath expr="/form//field[@name='phone']" position="before">
+                    <field name="chk" string="Chk"/>
+           </xpath>
+           <xpath expr="/form//field[@name='phone']" position="before">
+                    <field name="paticipantno" string="Paticipant Number"/>
+           </xpath>
+           <page string="Internal Notes" position="after">
+           <page string="SCREENING">
+             <group col="4" colspan="2">
+            <div name="screening" class="oe_left oe_button_box"> </div>
+          </group>
+           </page>
+           <page string="ELIGIBILITY">
+               <div class="oe_button_box" name="eligibility"> </div>
+           </page>
+           <page string="ENROLLMENT">
+               <div class="oe_button_box" name="enrollment"> </div>
+           </page>
+           <page string="FOLLOW-UP">
+               <div class="oe_button_box" name="follow-up"> </div>
+           </page>
+           <page string="SERCONVERTER">
+               <div class="oe_button_box" name="serconverter"> </div>
+           </page>
+           <page string="LOGS">
+               <div class="oe_button_box" name="logs"> </div>
+           </page>
+           </page>
+           </field>       
+           </record>
+    </data> 
+</openerp>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_knowledge_index_tree" model="ir.ui.view">
+        <field name="name">knowledge.index.tree</field>
+        <field name="model">knowledge.index</field>
+        <field name="arch" type="xml">
+        <tree string="Index HIV Knowledge">
+            <field name="intercourse"/>
+            <field name="transfusion"/>
+            <field name="unborn"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="view_knowledge_index_form" model="ir.ui.view">
+        <field name="name">knowledge.index.form</field>
+        <field name="model">knowledge.index</field>
+        <field name="arch" type="xml">
+        <form string="Index HIV Knowledge" version="8.0">
+        <sheet>
+        <separator string="Index HIV Knowledge"/>
+        <group>
+        <field name="sceening_id"/>
+        <field name="partner_id"/>
+        <field name="visitdate"/>
+        </group>
+        <group string="1. Do you think you can get HIV infection by … ?">
+            <field name="intercourse"/>
+            <field name="transfusion"/>
+            <field name="unborn"/>
+            <field name="toilets"/>
+            <field name="objects"/>
+            <field name="needles"/>
+            <field name="food"/>
+            <field name="utensils"/>
+            <field name="bitten"/>
+            <field name="witchcraft"/>
+            <field name="kissing"/>
+            <field name="hugging"/>
+        </group>
+        <group string="2. Do you think you can avoid being infected by your partner by … ?">
+            <field name="sharp"/>
+            <field name="praying"/>
+            <field name="abstaining"/>
+            <field name="condom"/>
+            <field name="antibiotics"/>
+            <field name="protection"/>
+            <field name="nothing"/>
+            <field name="circumcision"/>
+            <field name="PrEPeveryday"/>
+            <field name="PrEPtime"/>
+        </group>
+        <newline />
+        </sheet>
+        </form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_knowledge_index_search">
+            <field name="name">Index HIV Knowledge</field>
+            <field name="model">knowledge.index</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_knowledge_index_form">
+            <field name="name">Index HIV Knowledge</field>
+            <field name="res_model">knowledge.index</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_knowledge_index_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='screening']" position="inside">
+                        <button name="%(action_knowledge_index_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Index HIV Knowledge" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

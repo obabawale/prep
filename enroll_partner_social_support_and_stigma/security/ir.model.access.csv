@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_enrollment_partnersocialsupport_prep_user,enrollment.partnersocialsupport.prep.user,model_enrollment_partnersocialsupport,__export__.res_groups_19,1,1,1,1

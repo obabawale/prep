@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_screeninglab_results_tree" model="ir.ui.view">            
+            <field name="name">screeninglab.results.tree</field>
+            <field name="model">screeninglab.results</field>
+            <field name="arch" type="xml">
+                <tree string="The PROJECT Screening Lab Results">
+                    <field name="specimen"/>
+                    <field name="hiv_status_national_algo"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_screeninglab_results_form" model="ir.ui.view">
+            <field name="name">screeninglab.results.form</field>
+            <field name="model">screeninglab.results</field>
+            <field name="arch" type="xml">
+
+                <form string="The PROJECT Screening Lab Results" version="8.0">
+                    <sheet>
+                        
+                        <separator string="The PROJECT Screening Lab Results"/>
+                        <group>
+                        <field name="sceening_id"/>
+                        <field name="partner_id"/>
+                        <field name="visitdate"/>
+                        </group>
+                        <group string="1. HIV test result">
+                            <field name="specimen"/>
+                        </group>
+                        <group>
+                            <field name='hiv_status_national_algo'/>
+                        </group>
+                        <group string="3. Partner Screening Lab Results (completed for partner participants only)">
+                            <field name="collectiondate"/>
+                    	</group>
+                    	<group>
+                                <span class='oe_inline'><strong><label for='hepatitisb' class='oe_inline'/><field name="hepatitisb" class='oe_inline'/></strong> If positive, participant is ineligible</span> 
+                    	</group>
+                    	<group>
+                                <field name="creatinine"><span>μmol/L</span></field>
+                    	</group>
+                    	<group>
+                            <field name="creatinineclearance"><span>ml/min</span><span>  If Creatinine clearance is ≤60 ml/min, participant is ineligible</span></field>
+                        </group>
+                        <group string="Index Screening Lab Results (completed for index participants only)">
+                            <field name="specimencollection"/>
+                            <field name="CD4"><span>/μL</span></field>
+                            <field name="viralload"><span>Copies/ml</span></field>
+                            <field name="comm"/>
+                        </group>
+                        <newline />
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_screeninglab_results_search">
+            <field name="name">The PROJECT Screening Lab Results</field>
+            <field name="model">screeninglab.results</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_screeninglab_results_form">
+            <field name="name">The PROJECT Screening Lab Results</field>
+            <field name="res_model">screeninglab.results</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_screeninglab_results_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='screening']" position="inside">
+                        <button name="%(action_screeninglab_results_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="The PROJECT Screening Lab Results" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

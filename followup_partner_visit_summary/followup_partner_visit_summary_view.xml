@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_visit_tree_view" model="ir.ui.view">
+        <field name="name">followup.visit.tree</field>
+        <field name="model">followup.visit</field>
+        <field name="arch" type="xml">
+        <tree string="Partner Visit Summary">
+            <field name='visit_date'/>
+            <field name='attendvisit'/>
+            <field name='travelling'/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="followup_visit_form_view" model="ir.ui.view">
+            <field name="name">followup.visit.form</field>
+            <field name="model">followup.visit</field>
+            <field name="arch" type="xml">
+                <form>
+                <sheet>
+                        <group>
+                        <field name="partner_id"/>
+                        <field name="sceening_id"/>
+                        <field name='visit_date'/>
+                        <field name='attendvisit'/>
+                        </group>
+                        <group string="Why did the participant miss the visit?">
+                            <field name='travelling'/>
+                            <field name='familyorper'/>
+                            <field name='refvisit'/>
+                            <field name='plannedabs'/>
+                            <field name='workorschl'/>
+                            <field name='transportiss'/>
+                            <field name='illorhos'/>
+                            <field name='incarcerated'/>
+                            <field name='reloormovd'/>
+                            <field name='unabletocon'/>
+                            <field name='other'/>
+                        </group>
+                        <group string="2. Location of study visit:">
+                            <field name='clinic'/>
+                            <field name='home'/>
+                            <field name='other2'/>
+                        </group>
+                        <group>
+                            <field name='takenhivmed'/>
+                            <field name='noofdays'/>
+                            <field name='onprep'/>
+                        </group>                        
+                        <group string="4. Type of visit:">
+                            <field name='scheduled'/>
+                            <field name='monthpreg'/>
+                            <field name='interim'><p>If interim go to 5</p></field>
+                            <field name='stopvisit'/>    
+                        </group>                        
+                        <group string="5. Reason for interim visit: Mark all that apply.">
+                            <field name='compschproc'/>
+                            <field name='repsocharm'/>
+                            <field name='pillcount'/>
+                            <field name='blooddraw'/>
+                            <!--<div><p>If diagnozed with STI, Physical exam</p></div>-->
+                            <field name='stisymp'><p>If diagnozed with STI, Physical exam</p></field>
+                            <field name='pckupdrug'/>
+                            <field name='confrmdpreg'/>
+                            <field name='completepreg'/>
+                            <field name='specother'/>             
+                        </group>                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_visit_search">
+            <field name="name">Partner Visit Summary</field>
+            <field name="model">followup.visit</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_visit_form_action" model="ir.actions.act_window">
+            <field name="name">Partner Visit Summary</field>
+            <field name="res_model">followup.visit</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_visit_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_visit_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Partner Visit Summary" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

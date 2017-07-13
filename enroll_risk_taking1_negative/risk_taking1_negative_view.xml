@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="risk_taking_negative_tree_view" model="ir.ui.view">
+            <field name="name">Risk Taking Behaviour 1 HIV Negative</field>
+            <field name="model">risk.taking.negative</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="visitdate"/>
+                    <field name="partner_id"/>
+                    <field name="sceening_id"/>
+                    <field name="ingeneral"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="risk_taking_negative_form_view" model="ir.ui.view">
+    		<field name="name">Risk Taking Behaviour 1 HIV Positive </field>
+       		<field name="model">risk.taking.negative</field>
+       		<field name="arch" type="xml">
+       			<form string='Risk Taking Behaviours 1 HIV Negative'>
+                    <div style="text-align:center;">
+                        <h2>Risk Taking Behaviours 1 HIV Negative</h2>
+                    </div>
+                    <br/>
+
+                    <!-- HEADERS FOR SCREENING ID, ENROLLMENT ID AND VISIT DATE -->
+                    <div class="row mt32" style="col-xs-12; col-xs-offset-2; border: 1px solid #568eff;">
+                        <div class="col-xs-2">Screening ID:</div>
+                        <div class="col-xs-2">Enrollment ID:</div>
+                        <div class="col-xs-2">Visit Date:</div>
+                    </div>
+
+                    <!-- here the values of the screening id, enrollment id and visit date go -->
+                    <div class="row mt32" style="col-xs-12; col-xs-offset-2; border: 1px solid #568eff;">
+                        <div class="col-xs-2"><field name="partner_id"/></div>
+                        <div class="col-xs-2"><field name="enrollment_id"/></div>
+                        <div class="col-xs-2"><field name="visitdate"/></div>
+                    </div>
+                    <br/>
+
+                    <hr/>
+
+                        <div>                            
+                            <div>
+                                <h3>
+                                    1. Are you generally a respondent who is fully prepared to take risks or do you try to avoid taking risks on a scale out of 10, where 0 means “not at all willing to take risks” and 10 means “very willing to take risks"
+                                </h3>
+                            </div>
+                            <div>
+                                <center>
+                                    <img src="/enroll_risk_taking1_negative/static/img/NACAIMAGE.png" style="width:600;height:300;"/> 
+                                </center>
+                            </div>
+                            <div>
+                                <label for='ingeneral' class='oe_inline'/><field name='ingeneral' class='oe_inline'/>
+                                <label for='financialmatters' class='oe_inline'/><field name='financialmatters' class='oe_inline'/>
+                                <label for='yourhealth' class='oe_inline'/><field name='yourhealth' class='oe_inline'/>
+                                <label for='sexualbehaviours' class='oe_inline'/><field name='sexualbehaviours' class='oe_inline'/>
+                            </div>
+                        </div><br/>
+                        <div>
+                            <h4>
+                                2. Would you prefer having 5000 Nairas for sure or to play a game with a 50% chance of having 15000 Nairas and a 50% of having nothing? 
+                            </h4>
+                            <div>                                
+                                <span class='oe_inline'>
+                                    1=I prefer N5000 for sure <br/>2=I have no preference, the two are identical <br/>3= I prefer to play the lottery
+                                </span>                                
+                                <field name="would_you_prefer" class='oe_inline'/>
+                            </div>
+                        </div>                                                                          
+                        <div >
+                            <p>
+                                3. In this game, we will present you 6 businesses and we will ask you to choose your favourite business i.e. the one you would like to invest in if you were using real money. Every business has a 50% chance of yielding to a high payoff and a 50% chance of yielding a low payoff. This probability is now the same for every business, however the amount of the low and high payoff vary across businesses. For instance, if you chose business 1, the low and high payoff are similar so you are sure that with business 1 you will earn N5600. However, if you choose Business 6, you have 50% chance of earning N14000 but also a 50% chance of earning N400. You can only invest in one business. Make your choice by writing X on the far right hand column of the table.                                
+                            </p>
+                            <div>
+                                <span style='margin-right:1.25em; display:inline-block;'>  Investment choices  </span>
+                                <span style='margin-right:1.25em; display:inline-block;'>  Probability  </span>
+                                <span style='margin-right:1.25em; display:inline-block;'> Low pay off </span>
+                                <span style='margin-right:1.25em; display:inline-block;'>  High payoff  </span>
+                                <span style='margin-right:1.25em; display:inline-block;'>  Preferred Business  </span>
+                            </div>
+                            <div>
+                                <span style='margin-right:5.5em; display:inline-block;'>  Business 1  </span>
+                                <span style='margin-right:1.25em; display:inline-block;'>  50%-50%  </span>
+                                <span style='margin-right:3.0em; display:inline-block;'>  N5,600  </span>
+                                <span style='margin-right:3em; display:inline-block;'>  N5,600  </span>
+                                <field name='business1' style='margin-right:1.25em; display:inline-block;'/>
+                            </div>
+                            <div>
+                                <span style='margin-right:5.5em; display:inline-block;'>Business 2</span>
+                                <span style='margin-right:1.25em; display:inline-block;'>50%-50%</span>
+                                <span style='margin-right:3.0em; display:inline-block;'>N4,800</span>
+                                <span style='margin-right:3em; display:inline-block;'>N7,200</span>
+                                <field name='business2' style='margin-right:1.25em; display:inline-block;'/>
+                            </div>
+                            <div>
+                                <span style='margin-right:5.5em; display:inline-block;'>Business 3</span>
+                                <span style='margin-right:1.25em; display:inline-block;'>50%-50%</span> 
+                                <span style='margin-right:3.0em; display:inline-block;'>N4,000 </span> 
+                                <span style='margin-right:2.15em; display:inline-block;'>N8,800</span>
+                                <field name='business3' style='margin-right:1.25em; display:inline-block;'/>
+                            </div>
+                            <div>
+                                <span style='margin-right:5.5em; display:inline-block;'>Business 4</span>
+                                <span style='margin-right:1.25em; display:inline-block;'>50%-50%</span>
+                                <span style='margin-right:3.0em; display:inline-block;'>N3,200 </span>
+                                <span style='margin-right:3em; display:inline-block;'>N10,400</span>
+                                <field name='business4' style='margin-right:1.25em; display:inline-block;'/>
+                            </div>
+                            <div>
+                                <span style='margin-right:5.5em; display:inline-block;'>Business 5</span>
+                                <span style='margin-right:1.25em; display:inline-block;'>50%-50%</span>
+                                <span style='margin-right:3.0em; display:inline-block;'>N2,400</span>
+                                <span style='margin-right:3em; display:inline-block;'> N12,000</span>
+                                <field name='business5' style='margin-right:1.25em; display:inline-block;'/>
+                            </div>
+                            <div>
+                                <span style='margin-right:5.5em; display:inline-block;'>Business 6</span>
+                                <span style='margin-right:1.25em; display:inline-block;'>50%-50%</span>
+                                <span style='margin-right:3.0em; display:inline-block;'>N400</span>
+                                <span style='margin-right:3em; display:inline-block;'>N14,000</span>
+                                <field name='business6' style='margin-right:1.25em; display:inline-block;'/>
+                            </div>
+                        </div>       				
+       			</form>	       		
+	       	</field>
+       </record>
+
+       <record model="ir.ui.view" id="view_risk_taking_negative_search">
+            <field name="name">Risk Taking Behaviours 1 HIV Positive</field>
+            <field name="model">risk.taking.negative</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="risk_taking_negative_form_action" model="ir.actions.act_window">
+            <field name="name">Risk Taking Behaviours 1 HIV Negative</field>
+            <field name="res_model">risk.taking.negative</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="risk_taking_negative_form_view_1" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='enrollment']" position="inside">
+                        <button name="%(risk_taking_negative_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Risk Taking Behaviours 1 HIV Negative" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

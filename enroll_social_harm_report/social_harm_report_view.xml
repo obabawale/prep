@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="enrollment_socialharm_tree_view" model="ir.ui.view">
+            <field name="name">enrollment.socialharm.tree</field>
+            <field name="model">enrollment.socialharm</field>
+            <field name="arch" type="xml">
+                <tree string="Social Harm Report">
+                    <field name="enrollment_id"/>
+                <field name="visit_date"/> 
+                <field name="verbal_abuse"/>
+                <field name="phyabuse"/>        
+                </tree>
+            </field>
+        </record>
+    
+        <record id="enrollment_socialharm_form_view" model="ir.ui.view">
+            <field name="name">enrollment.socialharm.form</field>
+            <field name="model">enrollment.socialharm</field>
+            <field name="arch" type="xml">
+                <form string="Social Harm" version="8.0">                    
+                    <sheet>
+                        <group>
+                        <field name="partner_id"/>
+                        <field name="sceening_id"/>
+                        <field name="enrollment_id"/>
+                        </group>
+                        <group string="The following questions are not interviewer-administered. please collect the following information in a culturally appropriate way in the context of a counselling session."/>
+                        <group>
+                            <field name="visit_date"/>
+                            <field name="verbal_abuse"/>
+                             <field name="verbal_abuse_howoften"/>
+                            <field name="phyabuse"/>
+                            <field name="phyabuse_how_often"/>
+                            <field name="econabuse"/>
+                            <field name="otherabuse"/>
+                        </group>
+
+                        <div>
+                            <h3>5. What were the consequences of the abuse? Mark all that apply.</h3>
+                        </div>
+                        
+                        <group>
+                            <field name="breakup"/>
+                            <field name="lossincome"/>
+                            <field name="lossofemploy"/>
+                            <field name="residence"/>
+                            <field name="custody"/>
+                            <field name="other"/>
+                            <field name="none"/>
+                        </group> 
+                        <group>
+                            <field name="describe"/>
+                        </group>               
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_enrollment_socialharm_search">
+            <field name="name">Social Harm Report</field>
+            <field name="model">enrollment.socialharm</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="enrollment_socialharm_form_action" model="ir.actions.act_window">
+            <field name="name">Social Harm Report</field>
+            <field name="res_model">enrollment.socialharm</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record  id="enrollment_socialharm_form_view_1" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='enrollment']" position="inside">
+                        <button name="%(enrollment_socialharm_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Social Harm Report" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

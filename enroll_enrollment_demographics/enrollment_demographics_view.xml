@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_enrollment_demographics_tree" model="ir.ui.view">
+            <field name="name">enrollment_demographics.tree</field>
+            <field name="model">enrollment.demographics</field>
+            <field name="arch" type="xml">
+                <tree string="Demographics">
+                    <field name="enrollment_id"/>
+                    <field name="visitdate"/>
+                    <field name="gender_respondent"/>
+                    <field name="marriedtostudypart"/>
+                </tree>
+            </field>
+        </record>
+    
+        <record id="enrollment_demographics_form_view" model="ir.ui.view">
+        <field name="name">enrollment.demographics.form</field>
+        <field name="model">enrollment.demographics</field>
+        <field name="arch" type="xml">
+        <form string="Enrollment Demographics" version="8.0">
+        <sheet>
+        <separator string=" Enrollment Demographics"/>
+        <group>
+            <field name="partner_id"/>
+            <field name="sceening_id"/>
+            <field name="enrollment_id"/>
+            <field name="visitdate"/>
+            <field name="dateofbirth"/>
+            <field name="gender_respondent"/>
+            <field name="marriedtostudypart"/>
+            <field name="howlong"/>
+        </group>
+
+        <div>
+            <div class='oe_inline'>
+                <h3>
+                    5. IF MALE: What is the rank of the wife’s respondent among his co-wives?<br/> IF FEMALE: What is the rank of the respondent among her co-wives?
+                </h3>
+            </div>
+            <div class='oe_inline'><field name="rank" /></div>
+        </div>
+
+        <group>
+            <field name="areyoumarried"/>
+            <field name="livetogether"/>
+            <field name="howlongtogeda"/>
+            <field name="livingchildren"/>
+            <field name="deadchildren"/>
+            <field name="howmanyliving"/>
+            <field name="wantmorechildren"/>
+            <field name="firstsex"/>
+            <field name="knowhowlong"/>
+            <field name="ethnic"/>
+            <field name="educationlevel"/>
+            <field name="monthly_income"/>
+            </group>
+            <group string="16. In the respondent's house:">
+                <field name="is_there_electricity"/>
+                <field name="is_there_television"/>
+                <field name="is_there_refrigerator"/>
+                <field name="is_there_runningwater"/>
+                <field name="is_there_concrete_or_cement"/>
+                <field name="do_you_sleep_on_mattress"/>
+                <field name="does_household_haveacar"/>
+                <field name="do_you_have_mobilephone"/>
+                <field name="no_of_roomsinthehouse"/>
+                <field name="no_of_peopleinthehouse"/>
+            </group>
+            <group>
+            <field name="occupation"/>
+            <field name="other"/>
+            <field name="who_makes_healthdecisions"/>
+            <field name="do_you_need_permission_to_goout"/>
+            <field name="noofdrink"/>
+        </group>
+        <newline />
+        </sheet>
+        </form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_enrollment_demographics_search">
+            <field name="name">Enrollment Demographics</field>
+            <field name="model">enrollment.demographics</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record  id="enrollment_demographics_form_action" model="ir.actions.act_window">
+            <field name="name">Enrollment Demographics</field>
+            <field name="res_model">enrollment.demographics</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="enrollment_demographics_form_view_1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='enrollment']" position="inside">
+                        <button name="%(enrollment_demographics_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Enrollment Demographics" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

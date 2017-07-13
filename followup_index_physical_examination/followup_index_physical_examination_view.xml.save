@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_indexphysicalexam_tree_view" model="ir.ui.view">
+        <field name="name">followup.indexphysicalexam.tree</field>
+        <field name="model">followup.indexphysicalexam</field>
+        <field name="arch" type="xml">
+        <tree string="Follow up Index Physical Examination">
+            <field name="weight"/>
+        </tree>  
+        </field>
+        </record>
+    
+        <record id="followup_indexphysicalexam_form_view" model="ir.ui.view">
+            <field name="name">followup.indexphysicalexam.form</field>
+            <field name="model">followup.indexphysicalexam</field>
+            <field name="arch" type="xml">
+                <form>
+                <sheet>
+                <group>
+                <field name="partner_id"/>
+                <field name="sceening_id"/>
+                <field name="visitdate"/>
+                </group>
+                <separator string="Index Physical Examination"/>
+                <group>
+		<field name="height"/><span>cm</span></field>
+                <field name="weight"/><span>kg</span></field>
+                <field name="temperature"/><span>°C</span></field>
+                <field name="bloodpressure"/><span>°C</span></field>
+                <field name="respiratoryrate"/><span</span></field>
+                <field name="pulserate"/><span>/min</span></field>
+                </group>
+                <separator string="Syndromic Diagnoses"/>
+                <group string="for women only">
+                <field name="genital"/>
+                <field name="vaginitis"/>
+                <field name="cervicitis"/>
+                <field name="pelvic"/>
+                </group>
+                <group string="for men only">
+                <field name="circumcision"/>
+                </group>
+                <group string="STI Treatment"><span>°C</span></field>
+                <field name="treatmentgiven"/><span>If no, go to item 14.</span></field>
+                <field name="listmedications"/>
+                </group>
+                <separator string="Physical Signs"/>
+                <group string="Oral abnormalities: Mark all that apply">
+                <field name="gingivitis"/>
+                <field name="thrush"><span>Not eligible</span></field>
+                <field name="ulcer"/>
+                <field name="oralhairy"><span>Not eligible</span></field>
+                <field name="kaposi"><span>Not eligible</span></field>
+                <field name="Others"/>
+                </group>
+                <group string="Skin abnormalities: Mark all that apply">
+                <field name="generalized"/>
+                <field name="kaposisarcoma"><span>Not eligible</span></field>
+                <field name="zoster"/>
+                <field name="Others2"/>
+                </group>
+                <group string="Site of lymph node(s)">
+                <field name="lymphnode"><span>If no, end of form</span></field>
+                <field name="cervical"/>
+                <field name="inguinal"/>
+                <field name="axillary"/>
+                <field name="Others3"/>
+                </group>
+                <group>
+                <field name="sizeof"><span>cm</span></field>
+                </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_indexphysicalexam_search">
+            <field name="name">Followup Index Physical Examination</field>
+            <field name="model">followup.indexphysicalexam</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_indexphysicalexam_form_action" model="ir.actions.act_window">
+            <field name="name">Followup Index Physical Examination</field>
+            <field name="res_model">followup.indexphysicalexam</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_indexphysicalexam_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_indexphysicalexam_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Followup Index Physical Examination" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

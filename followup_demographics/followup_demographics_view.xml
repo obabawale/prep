@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_demographics_tree_view" model="ir.ui.view">
+        	<field name="name">followup.demographics.tree</field>
+        	<field name="model">followup.demographics</field>
+        	<field name="arch" type="xml">
+                <tree string="CD4 and Viral Load">
+                </tree> 
+        	</field>
+        </record>     
+
+        <record id="followup_demographics_form_view" model="ir.ui.view">
+        	<field name="name">followup.demographics.form</field>
+        	<field name='model'>followup.demographics</field>
+        	<field name="arch" type="xml">
+        		<form>
+        			<sheet>
+        				<separator string=" Enrollment Demographics"/>
+        <group>
+            <field name="partner_id"/>
+            <field name="sceening_id"/>
+            <field name="visitdate"/>
+            <field name="resgender"/>
+            <field name="marriedto"/>
+            <field name="howlong"/>
+            <field name="ifmale"/>
+            <field name="iffemale"/>
+            <field name="areyoumarried"/>
+            <field name="livetogether"/>
+            <field name="howlong2geda"/>
+            <field name="livingchild"/>
+            <field name="deadchild"/>
+            <field name="howmanyliving"/>
+            <field name="wantmore"/>
+            <field name="firstsex"/>
+            <field name="knowhowlong"/>
+            <field name="ethnic"/>
+            <field name="educationlevel"/>
+            <field name="income"/>
+            </group>
+            <group string="In the respondent's house:">
+                <field name="electricity"/>
+                <field name="television"/>
+                <field name="refrigerator"/>
+                <field name="runningwater"/>
+                <field name="concrete/cement"/>
+                <field name="mattress"/>
+                <field name="haveacar"/>
+                <field name="mobilephone"/>
+                <field name="roomsinthehouse"/>
+                <field name="peopleinthehouse"/>
+            </group>
+            <group>
+            <field name="occupation"/>
+            <field name="other"/>
+            <field name="healthdecisions"/>
+            <field name="goout"/>
+            <field name="noofdrink"/>
+        </group>
+        			</sheet>
+        		</form>        		
+        	</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_followup_demographics_search">
+            <field name="name">Follow up Demographics</field>
+            <field name="model">followup.demographics</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_demographics_form_action" model="ir.actions.act_window">
+        	<field name="name">Follow up Demographics</field>
+        	<field name="res_model">followup.demographics</field>
+        	<field name="view_type">form</field>
+        	<field name="view_mode">tree,form</field>
+        	<field name="context">{'search_default_partner_id':active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="followup_demographics_form_view_1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_demographics_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Follow up Demographics" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

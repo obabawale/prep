@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_interruption_tree_view" model="ir.ui.view">
+        <field name="name">followup.interruption.tree</field>
+        <field name="model">followup.interruption</field>
+        <field name="arch" type="xml">
+        <tree string="Partner Study Drug Interruption">
+            <field name='visit_date'/>
+            <field name='meddiscont'/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="followup_interruption_form_view" model="ir.ui.view">
+            <field name="name">followup.interruption.form</field>
+            <field name="model">followup.interruption</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name='visit_date'/>
+                            <field name='meddiscont'/>
+                            </group>
+                            <group string="Reason for interrupting or discontinuing study medication: Mark all that apply.">
+                            <field name='beenonarv'/>
+                            <field name='seroconverter'/>
+                            <field name='renaltox'/>
+                            <field name='advevent'/>
+                            <field name='refusedstudy'/>
+                            <field name='positpreg'/>
+                            <field name='partbreast'/>
+                            <field name='invesdecision'/>
+                            <field name='otherreasons'/>
+                            </group> 
+                            <group string="Item 8 may be completed at a later time than items 1 and 2. Fax this form again when study medication is re-established, when study medication is permanently discontinued, or when participant completes study follow-up without re-establishing study medication.">
+                            <field name='studymeddate'/>
+                            <field name='commentsss'/>
+                        </group>                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_interruption_search">
+            <field name="name">Partner Study Drug Interruption</field>
+            <field name="model">followup.interruption</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_interruption_form_action" model="ir.actions.act_window">
+            <field name="name">Partner Study Drug Interruption</field>
+            <field name="res_model">followup.interruption</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_interruption_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_interruption_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Partner Study Drug Interruption" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

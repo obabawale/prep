@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followuppartner_labresults_tree_view" model="ir.ui.view">
+        <field name="name">followuppartner.labresults.tree</field>
+        <field name="model">followuppartner.labresults</field>
+        <field name="arch" type="xml">
+        <tree string="Follow up Partner Follow up Lab Results">
+            <field name='visit_date'/>
+            <field name='speccoldate'/>
+            <!--<field name='hivsatus'/>-->
+        </tree>
+        </field>
+        </record>
+    
+        <record id="followuppartner_labresults_form_view" model="ir.ui.view">
+            <field name="name">followuppartner.labresults.form</field>
+            <field name="model">followuppartner.labresults</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    	<group>
+                            <field name="sceening_id"/>
+                            <field name="partner_id"/>                            
+                            <field name='visit_date'/>
+                        </group>
+                        <group string='1. HIV test result'>
+                        	<field name='speccoldate'/>
+                        </group>
+                        <group string='2. HIV status by national algorithm:'>
+                            <field name='hiv_negative'><span>Potential partner participant. Go to item 3.</span></field> 
+							<field name='hiv_positive'><span>Potential index participant. Go to item 7.</span></field>
+                            <field name='hiv_indeterminate'><span>Further evaluation of HIV status needed to determine eligibility.</span></field>     
+                        </group>
+                        <div>
+                        	<h4>
+                         		EIA
+                         	</h4>
+                            <label for='eia_negative'/><field name='eia_negative'/>Contact Site PI<br/>  
+							<label for='eia_positive'/><field name='eia_positive'/>Confirmed seroconverter<br/>
+                            <label for='eia_indeterminate'/><field name='eia_indeterminate'/>Contact medical director<br/>      
+                        </div>
+                        <group string='Pregnancy Testing Complete this section for female participants only.'>
+                        	<field name='mensdate'/>
+                        	<field name='dont_know'/>
+                            <field name='partpregnant'/>
+                            <field name='already_reported'/>
+                            <field name='reported_date'/>
+                            <field name='breastfeeding'><span>If yes,do not dispense study medication. Stop study drug and complete</span></field>
+                        </group>
+                        <div> 
+                        	<h3>
+                        		Lab Results Complete this section at Month 1, 3, 6, 12 / Study Stop, and at possible Sero-conversion visits.
+                        	</h3>
+                            <label for='specimendate'/><field name='specimendate'/><br/>
+                            <label for='creatinine' class='oe_inline'/><field name='creatinine' class='oe_inline'/>µmol/L<br/>
+                            <label for='creatgrade'/><field name='creatgrade'><p>If Grade 1, participant should return for repeat testing and if result is confirmed, stop study drug. Complete PSDI and contact medical director.  If Grade 2-4, stop study drug immediately and participant should return for repeat testing. Complete PSDI and contact medical director.</p></field><br/>
+                            <label for='adversevnt'/><field name='adversevnt'/>If no, go to item 8.<br/>
+                            <label for='reltomed'/><field name='reltomed'/><br/>
+                            <label for='creatinine_clear' class='oe_inline'/><field name='creatinine_clear' class='oe_inline'/>ml/min.<br/> If Creatinine clearance is ≤ 60 ml/min, participant is ineligible.
+                        </div>                    	                    
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followuppartner_labresults_search">
+            <field name="name">Followup Partner Follow up Lab Results</field>
+            <field name="model">followuppartner.labresults</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followuppartner_labresults_form_action" model="ir.actions.act_window">
+            <field name="name">Followup Partner Follow up Lab Results</field>
+            <field name="res_model">followuppartner.labresults</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followuppartner_labresults_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followuppartner_labresults_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Followup Partner Follow up Lab Results" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

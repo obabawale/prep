@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<openerp>
+	<data>
+		<record id="enrollment_sexbehaviour_tree_view" model="ir.ui.view">
+			<field name="name">enrollment.sexbehaviour.tree</field>
+			<field name="model">enrollment.sexbehaviour</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="enrollment_id"/>
+					<field name="visit_date"/>
+					<field name="last_sexual_intercouse"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="enrollment_sexbehaviour_form_view" model="ir.ui.view">
+			<field name="name">sex.bahaviour.form</field>
+			<field name="model">enrollment.sexbehaviour</field>
+			<field name="arch" type="xml">
+
+				<form string='Enrollment Sexual Behaviour'>
+					<sheet string='Enrollment Sexual Behaviour'>
+                        <group>
+						<field name="partner_id"/>
+						<field name="sceening_id"/>
+						<field name="enrollment_id"/>
+						<field name="visit_date"/>
+						</group>
+						<separator string="Enrollment Sexual Behaviour These are interviewer-administered questions and should be read aloud directly as written"/>
+						<group>		
+							<field name="last_sexual_intercouse"/>
+							<field name="use_condom"/>	
+						</group>
+						<div>
+							<span><label for="sex_times" class="oe_inline"/><field name="sex_times" class="oe_inline"/>If 00, go to item 3.</span>
+						</div>
+						<group>
+							<field name="condom_times"/>	
+						</group>
+						<div>						
+							<span><label for="sex_individuals" class="oe_inline"/><field name="sex_individuals" class="oe_inline"/>If 00, go to item 4.</span>
+						</div>
+						<group>
+							<field name="new_partners"/>
+							<field name="new_partner_times"/>
+							<field name="times_used_condom"/>
+						</group>
+						<group>
+							<field name="anal_sex"/>
+						</group>
+
+						<div><h3>Items 5-8 are for females only. These questions refer to behaviour during the past month</h3></div>	
+						<div>
+							<span class='oe_inline'>5. Are you using any of the following birth control methods? Mark all that apply </span><field class='oe_inline' name='using_birth_control'/>
+						</div>
+						<group attrs="{'invisible':[('using_birth_control','=', 'no')]}">
+							<field name="oral"/>
+							<field name="implant"/>						
+							<field name="post_menopausal"/>
+							<field name="iud"/>
+							<field name="tubal_ligation"/>						
+							<field name="pregnant"/>
+							<field name="injectable"/>
+							<field name="condom"/>						
+							<field name="others"/>	
+						</group>
+						<div>
+							<span><label for="wash_inside_vagina" class="oe_inline"/><field name="wash_inside_vagina" class="oe_inline"/>If no, go to item 7.</span>
+						</div>
+						<group>
+							<field name="how_often"/>
+							<field name="use_to_wash_vagina"/>
+							<field name="other_used"/>
+							<field name="how_you_wash_vagina"/>
+							<field name="other"/>
+						</group>						
+						<div>
+							<span><label for="lubrication" class="oe_inline"/><field name="lubrication" class="oe_inline"/>If no, go to item 8.</span>
+						</div>
+						<div>
+							<h4>
+								a. What do you use for lubrication? Mark all that apply
+							</h4>
+						</div>
+						<div class='row' style='col-xs-12'>
+							<div class='col-xs-2'><span>saliva</span> <field name="lubrication_saliva"/></div>
+							<div class='col-xs-5'>Petroleum jelly <field name="lubrication_petroleum_jelly"/></div>
+							<div class='col-xs-5'>Others: <field name="lubrication_others"/></div>
+						</div>
+						<div>
+							<span><label for="insert" class="oe_inline"/><field name="insert" class="oe_inline"/>If no, end of form.</span>
+						</div>
+						<group>							
+							<field name="what"/>
+						</group>		
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_couple_eligibility_search">
+            <field name="name">Enrollment Sexual Behaviour</field>
+            <field name="model">enrollment.sexbehaviour</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+		<record id="enrollment_sexbehaviour_form_action" model='ir.actions.act_window'>
+			<field name="name">Enrollment Sexual Behaviour</field>
+			<field name="res_model">enrollment.sexbehaviour</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'search_default_partner_id':active_id}</field>
+		</record>
+
+		<record id="enrollment_sexbehaviour_form_view_2" model="ir.ui.view">
+			<field name="name">res.partner.form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+			<field name="arch" type="xml">
+				<data>
+					<xpath expr="//div[@name='enrollment']" position="inside">
+						<button name="%(enrollment_sexbehaviour_form_action)d" widget="monetary" string="Enrollment Sexual Behaviour" context="{'search_default_partner_id':active_id, 'default_duration':1.0}" type="action"/>
+					</xpath>
+				</data>
+			</field>
+		</record>
+	</data>
+</openerp>

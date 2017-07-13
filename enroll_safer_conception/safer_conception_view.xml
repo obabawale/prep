@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="enrollment_saferconception_tree_view" model="ir.ui.view">
+        <field name="name">enrollment.saferconception.tree</field>
+        <field name="model">enrollment.saferconception</field>
+        <field name="arch" type="xml">
+        <tree string="Safer Conception">
+            <field name="enrollment_id"/>
+            <field name="visit_date"/>
+            <field name="malecircum1"/>
+            <field name="artifiinsem1"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="enrollment_saferconception_form_view" model="ir.ui.view">
+            <field name="name">enrollment.saferconception.form</field>
+            <field name="model">enrollment.saferconception</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name="enrollment_id"/>
+                            <field name="visit_date"/>
+                        </group>
+                        <separator string="Safer Conception Items 1-13 are interviewer-administered questions and should be read aloud directly as written."/>
+                        <separator string="Do not read the options
+aloud but mark all that a
+participant mentions.
+"/>
+                        <group string="1. What things can couples do to reduce risk when trying to conceive a baby?">
+                            <field name="malecircum1"/>
+                            <field name="artifiinsem1"/>
+                            <field name="spermwash1"/>
+                            <field name="selfinsem1"/>
+                            <field name="usecondoms1"/>
+                            <field name="usePrEP1"/>
+                            <field name="useARVs1"/>
+                            <field name="treatSTI1"/>
+                            <field name="commet1"/>
+                            <field name="none1"/>
+                        </group>
+                        <group string="2. What things would you be willing to do to reduce risk when trying to conceive a baby?">
+                            <field name="malecircum2"/>
+                            <field name="artifiinsem2"/>
+                            <field name="spermwash2"/>
+                            <field name="selfinsem2"/>
+                            <field name="usecondoms2"/>
+                            <field name="usePrEP2"/>
+                            <field name="useARVs2"/>
+                            <field name="treatSTI2"/>
+                            <field name="commet2"/>
+                            <field name="none2"/>
+                        </group>
+                        <group string="3. What things would your partner be willing to do to reduce risk when trying to conceive a baby?">
+                            <field name="malecircum3"/>
+                            <field name="artifiinsem3"/>
+                            <field name="spermwash3"/>
+                            <field name="selfinsem3"/>
+                            <field name="usecondoms3"/>
+                            <field name="usePrEP3"/>
+                            <field name="useARVs3"/>
+                            <field name="treatSTI3"/>
+                            <field name="commet3"/>
+                            <field name="none3"/>
+                        </group>
+                        <group string="4. What things have you done to reduce risk when trying to conceive a baby?">
+                            <field name="malecircum4"/>
+                            <field name="artifiinsem4"/>
+                            <field name="spermwash4"/>
+                            <field name="selfinsem4"/>
+                            <field name="usecondoms4"/>
+                            <field name="usePrEP4"/>
+                            <field name="useARVs4"/>
+                            <field name="treatSTI4"/>
+                            <field name="commet4"/>
+                            <field name="none4"/>
+                        </group>
+                        <group string="I am going to read some statements about HIV and pregnancy. For each statement, please tell me if you think it is &quot;True,&quot; &quot;False,&quot; or if you &quot;Don't Know.&quot; If you do not know, that is OK. Many people have not been counseled or taught about this information. Please do not guess.">
+                            <field name="babyHIV"/>
+                            <field name="transmit"/>
+                            <field name="redchances"/>
+                            <field name="mancircum"/>
+                            <field name="fertile"/>
+                            <field name="fromsemen"/>
+                            <field name="uninfected"/>
+                            <field name="negative"/>
+                            <field name="withoutcond"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_enrollment_saferconception_search">
+            <field name="name">Safer Conception</field>
+            <field name="model">enrollment.saferconception</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="enrollment_saferconception_form_action" model="ir.actions.act_window">
+            <field name="name">Safer Conception</field>
+            <field name="res_model">enrollment.saferconception</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="enrollment_saferconception_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='enrollment']" position="inside">
+                        <button name="%(enrollment_saferconception_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Safer Conception" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

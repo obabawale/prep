@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_index_drugdispensing_tree" model="ir.ui.view">
+        <field name="name">followupindex.drugdispensing.tree</field>
+        <field name="model">followupindex.drugdispensing</field>
+        <field name="arch" type="xml">
+        <tree string="Index Drug Dispensing"/>
+        </field>
+        </record>
+
+        <record id="followupindex_drugdispensing_form_view" model="ir.ui.view">
+            <field name="name">followupindex.drugdispensing.form</field>
+            <field name='model'>followupindex.drugdispensing</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                        	<field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name="visitdate"/>
+                        </group>
+                        <group>                                
+                            <field name="eligibleforarv"/>
+                        </group>
+                        <group>
+                            <field name="alreadyonarv"/>
+                            <group>
+                                <field name="getting_arv_where"/>
+                                <field name="offsite_specify"/>
+                            </group>                                
+                        </group>
+                        <group string="3. Is the participant being offered ARVs today?">
+                            <field name="arvsonsite"/>
+                            <field name="referredoffsite"/>
+                            <field name="notofferedorreferred"/>
+                        </group>
+                        <div>
+                            <div>
+                            	<h3>
+                            		Did the participant accept all ARVs? Mark all that apply
+                            	</h3>
+                            	<label for="acceptedonsite" class='oe_inline'/>
+                                <field name="acceptedonsite" class='oe_inline'/>
+                                <label for="declinedonsite" class='oe_inline'/>
+                                <field name="declinedonsite" class='oe_inline'/>
+                                <label for="acceptedreferral" class='oe_inline'/>
+                                <field name="acceptedreferral" class='oe_inline'/>
+                                <label for="declinedreferral" class='oe_inline'/>
+                                <field name="declinedreferral" class='oe_inline'/>
+                            </div>
+                            <div>
+                                <label for="arvs_list" class='oe_inline'/><field name="arvs_list" class='oe_inline'/>
+                            </div>
+                        </div>                            
+                        <group>
+                            <field name="comments"/>
+                        </group>
+                    </sheet>
+                </form>             
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_followupindex_drugdispensing_search">
+            <field name="name">Follow up Index Drug Dispensing Record</field>
+            <field name="model">followupindex.drugdispensing</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followupindex_drugdispensing_form_action" model="ir.actions.act_window">
+            <field name="name">Follow up Index Drug Dispensing Record</field>
+            <field name="res_model">followupindex.drugdispensing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id':active_id}</field>
+        </record>
+
+        <record id="followupindex_drugdispensing_form_view_2" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followupindex_drugdispensing_form_action)d" widget="monetary" string="Follow up Index Drug Dispensing Record" context="{'search_default_partner_id':active_id}" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data> 
+</openerp>

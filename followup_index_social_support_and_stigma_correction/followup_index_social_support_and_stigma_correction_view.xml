@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followupindex_socialsupport_tree_view" model="ir.ui.view">
+        <field name="name">followupindex.socialsupport.tree</field>
+        <field name="model">followupindex.socialsupport</field>
+        <field name="arch" type="xml">
+        <tree string="Follow up Index Social Support and Stigma Correction">
+            <field name="visitdate"/>
+            <field name='getvisit'/>
+            <field name='getadvice'/>
+            <field name='getchances'/>
+            <field name='gettotalk'/>
+        </tree>  
+        </field>
+        </record>
+    
+        <record id="followupindex_socialsupport_form_view" model="ir.ui.view">
+            <field name="name">followupindex.socialsupport.form</field>
+            <field name="model">followupindex.socialsupport</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                        <field name="partner_id"/>
+                        <field name="sceening_id"/>
+                        <field name="visitdate"/>
+                        </group>
+                        <separator string="Index Physical Examination"/>
+                    <group string="Now I am going to ask you some questions about the support you receive from others. Thinking about your current situation, for each of the following ten statements, please respond as much as I would like; less than I would like; much less than I would like; or never."/>
+                            <group string="Symptoms">
+                                <field name='getvisit'/>
+                                <field name='getadvice'/>
+                                <field name='getchances'/>
+                                <field name='gettotalk'/>
+                                <field name='havepeople'/>
+                                <field name='getlove'/>
+                                <field name='getsupport'/>
+                                <field name='getmoney'/>
+                                <field name='gettransport'/>
+                                <field name='getsickhelp'/>
+                            </group>
+                            <group>
+                                <field name='relyfinance'/>
+                                <field name='relyemotion'/>
+                            </group>
+                            <group string="This section deals with your feeling about having HIV. It may be difficult for you, but please try to give your best answer and be as honest as possible. Please tell me if you strongly agree; agree; disagree; or strongly disagree with the following eight statements.">
+                                <field name='tellpeople'/>
+                                <field name='feelimmoral'/>
+                                <field name='feelguilty'/>
+                                <field name='feelashamed'/>
+                                <field name='feelworthless'/>
+                                <field name='myownfault'/>
+                                <field name='hidestatus'/>
+                                <field name='feelcertain'/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followupindex_socialsupport_search">
+            <field name="name">Followup Index Social Support and Stigma Correction</field>
+            <field name="model">followupindex.socialsupport</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followupindex_socialsupport_form_action" model="ir.actions.act_window">
+            <field name="name">Followup Index Social Support and Stigma Correction</field>
+            <field name="res_model">followupindex.socialsupport</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followupindex_socialsupport_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='buttons']" position="inside">
+                        <button name="%(followupindex_socialsupport_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Followup Index Social Support and Stigma Correction" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

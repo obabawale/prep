@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_sexbehaviour_tree_view" model="ir.ui.view">
+        <field name="name">followup.sexbehaviour.tree</field>
+        <field name="model">followup.sexbehaviour</field>
+        <field name="arch" type="xml">
+        <tree string="Follow up Sex Behaviour">
+            <field name="visit_date"/>
+            <field name="1"/>    
+            <field name="2"/>
+            <field name="2a"/> 
+         </tree>   
+        </field>
+        </record>
+    
+        <record id="followup_sexbehaviour_form_view" model="ir.ui.view">
+            <field name="name">followup.sexbehaviour.form</field>
+            <field name="model">followup.sexbehaviour</field>
+            <field name="arch" type="xml">
+                <form string="Follow-up Sexual Behavior Items 1-5 are interviewer-administered questions. Read each item aloud to the participant.">
+                    <sheet>
+                        <group string="Please read the following aloud before asking questions: Now I'm going to ask you about your sexual practices. While some of this information may be embarrassing or difficult to remember, please try to give your best answers and be as honest as you can. Whenever “sex” or “sexual intercourse” is stated, it includes vaginal and anal sex, but not oral sex. The term “condom” refers to either a male or female condom.">
+                            <field name="partner_id"/>
+                            <field name="visit_date"/>
+                            <field name="1"><span>If yes, go to item 3.</span></field>
+                        </group>
+                        <group>
+                            <field name="2"/>                         
+                            <field name="2a"><span>If no, go to item 3.</span></field>
+
+                            <field name="2b"/>    
+                        </group>
+                        <group>
+                            <field name="3"><span>If no, go to item 5.</span></field>
+                            <field name="3a"/>
+                            <field name="3b"/>
+                        </group>
+                        <group>
+                            <field name="4"><span>If 0, go to item 2.</span></field>
+                            <field name="4a"/>                     
+                            <field name="4b"/>
+                            <field name="4c"/>
+                        </group>
+                        <group>
+                            <field name="5"><span>If 0, go to item 6.</span></field>
+                            <field name="5a"/>
+                            <field name="5b"/>
+                            <field name="5c"/>                      
+                            <field name="6"/>  
+                        </group>
+                        <group>
+                            <field name="7"/>
+                        </group>
+                        <group string="Mark all that apply">
+                                <field name="Oral"/>
+                                <field name="Implant"/>
+                                <field name="Post-menopausal"/>
+                                <field name="IUD"/>
+                                <field name="tubal_ligation"/>
+                                <field name="Pregnant"/>
+                                <field name="Injectable"/>
+                                <field name="Condom"/>
+                                <field name="other"/>
+                        </group>
+			<group>
+			    <field name="8"><span>If yes, complete the social harm form.</span></field>
+			</group>			    
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_sexbehaviour_search">
+            <field name="name">Follow up Sex Behaviour</field>
+            <field name="model">followup.sexbehaviour</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_sexbehaviour_form_action" model="ir.actions.act_window">
+            <field name="name">Follow up Sex Behaviour</field>
+            <field name="res_model">followup.sexbehaviour</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_sexbehaviour_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_sexbehaviour_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Follow up Sex Behaviour" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

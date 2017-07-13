@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_adherence_tree_view" model="ir.ui.view">
+            <field name="name">followup.adherence.tree</field>
+            <field name="model">followup.adherence</field>
+            <field name="arch" type="xml">
+                <tree string="Study Drug Adherence">
+                    <field name="visitdate"/>
+                    <field name='studypill'/>
+                    <field name='taketablet'/>
+                </tree>
+            </field>
+        </record>
+    
+        <record id="followup_adherence_form_view" model="ir.ui.view">
+            <field name="name">followup.adherence.form</field>
+            <field name="model">followup.adherence</field>
+            <field name="arch" type="xml">
+                <form string='Study Drug Adherence'>
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name="visitdate"/>
+                        </group>
+                        <group string='Study Drug Adherence These are interviewer-administered questions and should be read aloud directly as written.'>
+                            <field name='studypill'/>
+                            <field name='taketablet' class='oe_inline'><span class='oe_inline'>If yes, go to item 3.</span></field>
+                            <field name='hwmanydays'/>
+                            <field name='noofdays'/>
+                        </group>
+                        <group>
+                            <field name='studytablets'/>
+                        </group>
+                        <group>
+                            <field name='nonofthe'/>
+                        </group>
+                        <group string="5. During the past month, what has helped you to remember to take your tablets? Mark all that apply.">
+                            <field name='nothin'/>
+                            <field name='watch'/>
+                            <field name='alarm'/>
+                            <field name='pillbox'/>
+                            <field name='studypart'/>
+                            <field name='radio'/>
+                            <field name='dailyacti'/>
+                            <field name='otherspec'/>
+                        </group>
+                        <group string="6 During the past month, what caused you to not take your tablets? Mark all that apply OR">
+                            <field name='forgot'/>
+                            <field name='alcuse'/>
+                            <field name='changeinrout'/>
+                            <field name='beforafter'/>
+                            <field name='illness'/>
+                            <field name='nothavinsex'/>
+                            <field name='losttablets'/>
+                            <field name='misavisit'/>
+                            <field name='dntavfood'/>
+                            <field name='travelled'/>
+                            <field name='stigma'/>
+                            <field name='sharedtab'/>
+                            <field name='tabstolen'/>
+                            <field name='sideeffe'/>
+                            <field name='other'/>
+                        </group>
+                        <group>
+                        	<field name='notaketab'/>
+                    	</group>
+                    	<div>
+                    		<div>
+                        		<label for='otherused'/><field name='otherused' class='oe_inline' style="width:600;"/>If no, end of form.
+                        	</div>
+                        	<div>                  	                       
+                            	<label for='studypartused'/><field name='studypartused' class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for='someoneelse'/><field name='someoneelse' class='oe_inline'/>If no or not sure, go to item 8c
+                            </div>
+                            <div>
+                            	<label for='who'/><field name='who' class='oe_inline'/>
+                            	<label for='dont_know_who'/><field name='dont_know_who' class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for='nooftabs'/><field name='nooftabs' class='oe_inline'/>
+                            	<label for='dont_know_how_many'/><field name='dont_know_how_many' class='oe_inline'/>
+                        	</div>
+                        </div>                         
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_adherence_search">
+            <field name="name">Study Drug Adherence</field>
+            <field name="model">followup.adherence</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_adherence_form_action" model="ir.actions.act_window">
+            <field name="name">Study Drug Adherence</field>
+            <field name="res_model">followup.adherence</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_adherence_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_adherence_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Study Drug Adherence" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

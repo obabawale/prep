@@ -1,0 +1,1 @@
+import enroll_partner_discordance_and_relationship_satisfaction_scale

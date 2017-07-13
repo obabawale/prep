@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_seroconverter_followupmedicalhistory_tree" model="ir.ui.view">
+        <field name="name">seroconverter.followupmedicalhistory.tree</field>
+        <field name="model">seroconverter.followupmedicalhistory</field>
+        <field name="arch" type="xml">
+        <tree string="Seroconverter Follow-up Medical History">
+            <field name="visitdate"/>
+            <field name="stage1"/>
+            <field name="stage2"/>
+            <field name="stage3"/>
+            <field name="stage4"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="view_seroconverter_followupmedicalhistory_form" model="ir.ui.view">
+        <field name="name">seroconverter.followupmedicalhistory.form</field>
+        <field name="model">seroconverter.followupmedicalhistory</field>
+        <field name="arch" type="xml">
+        <form string="Seroconverter Follow-up Medical History" version="8.0">
+        <sheet>
+        <separator string="Seroconverter Follow-up Medical History"/>
+        <group>
+        <field name="partner_id"/>
+        <field name="sceening_id"/>
+        <field name="visitdate"/>
+        </group>
+        <group string="1. Indicate the most advanced WHO stage">
+            <field name="stage1"/>
+            <field name="stage2"/>
+            <field name="stage3"/>
+            <field name="stage4"/>
+        </group>
+        <group>
+            <field name="participant"/>
+        </group>
+        <group>
+            <field name="toosick"/>
+        </group>
+        <group>
+            <field name="daysmissed"/>
+            <field name="bednet"/>
+        </group>
+        <group string="5. Since the last visit, has the participant taken any ARVs...">
+            <field name="fortreatment"/>
+            <field name="PMTCT"/>
+            <field name="wasstarted"/>
+            <field name="thengo"/>
+        </group>
+        <group string="5e. Why did the participant not take ARVs? Mark all that apply.">
+            <field name="eligible"/>
+            <field name="count"/>
+            <field name="stigma"/>
+            <field name="adherence"/>
+            <field name="healthy"/>
+            <field name="processing"/>
+            <field name="badside"/>
+            <field name="supportive"/>
+            <field name="clinic"/>
+            <field name="transportation"/>
+            <field name="newly"/>
+            <field name="others"/>
+        </group>
+        <group>
+            <field name="cotrimoxazole"/>
+        </group>
+        <group string="6a. Reason for taking co-trimoxazole: Mark all that apply.">
+            <field name="prophylaxis"/>
+            <field name="toxoplasmosis"/>
+            <field name="PCP"/>
+            <field name="others2"/>
+        </group>
+        <group>
+            <field name="isoniazid"/>
+        </group>
+        <group>
+            <field name="treated"/>
+            <field name="yyyyy"/>
+        </group>
+         <group>
+            <field name="currentlypregnant"/>
+            <field name="circumcised"/>
+        </group>
+        <newline />
+        </sheet>
+        </form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_seroconverter_followupmedicalhistory_search">
+            <field name="name">Seroconverter Follow-up Medical History</field>
+            <field name="model">seroconverter.followupmedicalhistory</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_seroconverter_followupmedicalhistory_form">
+            <field name="name">Seroconverter Follow-up Medical History</field>
+            <field name="res_model">seroconverter.followupmedicalhistory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_seroconverter_followupmedicalhistory_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='serconverter']" position="inside">
+                        <button name="%(action_seroconverter_followupmedicalhistory_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Seroconverter Follow-up Medical History" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

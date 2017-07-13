@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record id="enrollment_indexpreventionpref_tree_view" model="ir.ui.view">
+    		<field name="name">enrollment.indexpreventionpref.tree</field>
+	       	<field name="model">enrollment.indexpreventionpref</field>
+	       	<field name="arch" type="xml">
+	       		<tree string="Index Prevention Preference Questionnaire">
+	       			<field name="enrollment_id"/>
+	       			<field name="visitdate"/>
+	       			<field name='noconcers'/>
+	       		</tree>
+       		</field>
+        </record>
+
+       	<record id="enrollment_indexpreventionpref_form_view" model="ir.ui.view">
+       		<field name="name">enrollment.indexpreventionpref.form</field>
+	       	<field name="model">enrollment.indexpreventionpref</field>
+	       	<field name="arch" type="xml">
+	       		<form string='Index Prevention Preference Questionnaire' version='8.0'>
+	       			<sheet string='Index Prevention Preference Questionnaire'>
+	       					<separator string='These are interviewer-administered questions and should be read aloud'/>
+	       					<group>
+	       						<field name="partner_id"/>
+	       						<field name="sceening_id"/>
+	       						<field name="enrollment_id"/>
+	       						<field name="visitdate"/>
+	       					</group>
+	       					<group>
+	       						<field name='start_arv' font-size='50px'/>
+	       					</group>
+       						<group  string="1a. What fears or concerns do you have about starting ARVs? Mark all that apply">
+       							<field name='noconcers'/>
+		       					<field name='notwilling'/>
+		       					<field name='iwilldie'/>
+		       					<field name='sideffect'/>
+		       					<field name='pillburden'/>
+		       					<field name='maybeforced'/>
+		       					<field name='stigmaconcerns'/>
+		       					<field name='resistmaycom'/>
+		       					<field name='others'/>
+	       					</group>
+		       				<group>
+	       						<field name='prefer_for_hiv_prevention'/>
+	       					</group>
+	       					<group  string="3. Why would you prefer to? (insert response from item 2.) Mark all that apply.">
+	       						<field name='willbenefit'/>
+		       					<field name='usedtodrug'/>
+			        			<field name='takePrEP'/>
+			        			<field name='free'/>
+			        			<field name='keepfrom'/>
+			        			<field name='incharge'/>
+			        			<field name='alreadyon'/>
+			        			<field name='others_2'/>
+			        		</group>
+			        		<group>
+		        				<field name='noofchildren'/>
+		        			</group>
+		        			<group>
+		        				<field name='plan_to_have_next_child'/>
+		        			</group>
+		        			<group  string="5a. What are you doing to try to reduce your partner's HiV risk while trying to get pregnant? Mark all that apply."> 
+		        				<field name='unprotectedsex'/> 
+		        				<field name='takeart'/>
+		        				<field name='prep4partner'/>
+		        				<field name='others_3'/>
+		        			</group>
+		        			<group>
+		        			<field name='fertility'/>
+		        			</group>
+		        			<group>
+		        				<field name='riskofgivinghivtopartner'/>
+		        			</group>
+	       			</sheet>
+	       		</form>
+	       	</field>
+       	</record>
+
+       	<record model="ir.ui.view" id="view_enrollment_indexpreventionpref_search">
+            <field name="name">enrollment index prevention pref</field>
+            <field name="model">enrollment.indexpreventionpref</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+       	<record id="enrollment_indexpreventionpref_form_action" model="ir.actions.act_window">
+       		<field name="name">enrollment.indexpreventionpref.tree</field>
+       		<field name="res_model">enrollment.indexpreventionpref</field>
+       		<field name="view_type">form</field>
+       		<field name="view_mode">tree,form</field>
+       		<field name="arch" type="xml">
+       			<field name="context">{'search_default_partner_id':active_id}</field>
+       		</field>
+       	</record>
+
+       	<record id="enrollment_indexpreventionpref_form_view_1" model="ir.ui.view">
+			<field name="name">res.partner.form</field>
+	       	<field name="model">res.partner</field>
+	       	<field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+	       	<field name="arch" type="xml">
+	       		<data>
+	       			<xpath expr="//div[@name='enrollment']" position="inside">
+	       				<button name="%(enrollment_indexpreventionpref_form_action)d" widget="monetary" context="{'search_default_partner_id':active_id, 'duration':1.0}" string="Index Prevention Preference Questionnaire" type="action"/>
+	       			</xpath>
+	       		</data>
+	        </field>
+    	</record>
+    </data> 
+</openerp>

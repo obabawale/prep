@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_eligibility_indexenrollmentmedical_tree" model="ir.ui.view">
+        <field name="name">eligibility.indexenrollmentmedical.tree</field>
+        <field name="model">eligibility.indexenrollmentmedical</field>
+        <field name="arch" type="xml">
+        <tree string="Index Enrollment Medical History">
+            <field name="enrollment_id"/>
+            <field name="visitdate"/>
+            <field name="stage1"/>
+            <field name="stage2"/>
+            <field name="stage3"/>
+            <field name="stage4"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="view_eligibility_indexenrollmentmedical_form" model="ir.ui.view">
+        <field name="name">eligibility.indexenrollmentmedical.form</field>
+        <field name="model">eligibility.indexenrollmentmedical</field>
+        <field name="arch" type="xml">
+        <form string="Index Enrollment Medical History" version="8.0">
+        <sheet>
+        <separator string="Index Enrollment Medical History"/>            
+        <group>
+        <field name="partner_id"/>
+        <field name="sceening_id"/>
+        <field name="enrollment_id"/> 
+        <field name="visitdate"/>
+        </group>
+        <group string="1. Indicate the most advanced WHO stage">
+            <field name="stage1"/>
+            <field name="stage2"/>
+            <field name="stage3"/>
+            <field name="stage4"/>
+        </group>
+        <group>
+            <field name="positive"/>
+        </group>
+        <group>
+            <field name="participant"/>
+        </group>
+        <group>
+            <field name="toosick"/>
+        </group>
+        <group>
+            <field name="daysmissed"/>
+            <field name="bednet"/>
+        </group>
+        <group string="6. If currently taking ARVs, participant is ineligible.">
+            <field name="takenARVs"/>
+            <field name="PMTCT"/>
+            <field name="thengo"/>
+        </group>
+        <group string="6d. Why did the participant not take ARVs? Mark all that apply.">
+            <field name="eligible"/>
+            <field name="count"/>
+            <field name="stigma"/>
+            <field name="adherence"/>
+            <field name="healthy"/>
+            <field name="processing"/>
+            <field name="badside"/>
+            <field name="supportive"/>
+            <field name="clinic"/>
+            <field name="transportation"/>
+            <field name="newly"/>
+            <field name="others"/>
+        </group>
+        <group>
+            <field name="cotrimoxazole"/>
+        </group>
+
+        <!-- Label for question 7a-->
+        <div>
+        	<h3>7a. Reason for taking cotrimoxazole: Mark all that apply.</h3>
+        </div>
+        <group>
+            <field name="prophylaxis"/>
+            <field name="toxoplasmosis"/>
+            <field name="pcp_treatment"/>
+            <field name="other_reasons"/>
+        </group>
+        <group>
+            <field name="isoniazid"/>
+        </group>
+        <group string="Reason for taking cotrimoxazole: Mark all that apply.">
+            <field name="theparticipant"/>
+            <field name="treated"/>
+            <field name="yyyyy"/>
+        </group>
+         <group>
+            <field name="verbally"/>
+        </group>
+         <group>
+            <field name="participantcurrently"/>
+        </group>
+        <newline />
+        </sheet>
+        </form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_eligibility_indexenrollmentmedical_search">
+            <field name="name">Index Enrollment Medical History</field>
+            <field name="model">eligibility.indexenrollmentmedical</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_eligibility_indexenrollmentmedical_form">
+            <field name="name">Index Enrollment Medical History</field>
+            <field name="res_model">eligibility.indexenrollmentmedical</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_eligibility_indexenrollmentmedical_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='enrollment']" position="inside">
+                        <button name="%(action_eligibility_indexenrollmentmedical_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Index Enrollment Medical History" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record id="enrollment_partnerpreventionpref_tree_view" model="ir.ui.view">
+    		<field name="name">enrollment.partnerpreventionpref.tree</field>
+	       	<field name="model">enrollment.partnerpreventionpref</field>
+	       	<field name="arch" type="xml">
+	       		<tree string="Partner Prevention Preference Questionnaire">
+	       			<field name="visitdate"/>
+	       			<field name='noconcers'/>
+	       		</tree>
+       		</field>
+        </record>
+
+       	<record id="enrollment_partnerpreventionpref_form_view" model="ir.ui.view">
+       		<field name="name">enrollment.partnerpreventionpref.form</field>
+	       	<field name="model">enrollment.partnerpreventionpref</field>
+	       	<field name="arch" type="xml">
+	       		<form string="Partner Prevention Preference Questionnaire" version="8.0">
+	       			<sheet>
+	       					<separator string='These are interviewer-administered questions and should be read aloud directly as written'/>
+	       					<group>
+	       					<field name="partner_id"/>
+	       					<field name="sceening_id"/>
+	       					<field name="visitdate"/>
+	       					</group>
+	       						<group  string="1. What fears or concerns do you have about starting ARVs? Mark all that apply">
+	       							<field name='noconcers'/>
+			       					<field name='notwilling'/>
+			       					<field name='iwilldie'/>
+			       					<field name='sideffect'/>
+			       					<field name='pillburden'/>
+			       					<field name='maybeforced'/>
+			       					<field name='stigmaconcerns'/>
+			       					<field name='resistmaycom'/>
+			       					<field name='others'/>
+		       					</group>
+		       				<group string="2. If you could start on ARVs or your partner could take PrEP, which would you prefer for HIV prevention?">
+	       						<field name='startonarv'/>
+	       						<field name='useprep'/>
+	       					</group>
+	       					<group  string="3. Why would you prefer to? (insert response from item 2.) Mark all that apply.">
+	       						<field name='willbenefit'/>
+		       					<field name='usedtodrug'/>
+			        			<field name='takePrEP'/>
+			        			<field name='free'/>
+			        			<field name='keepfrom'/>
+			        			<field name='incharge'/>
+			        			<field name='alreadyon'/>
+							<field name='studydrug'/>
+							<field name='trustpart'/>
+			        			<field name='others_2'/>
+			        		</group>
+		        			<field name='noofchildren'/>
+		        			<group string="5. When do you plan to have your next child?">
+		        				<field name='getpregnant'/>
+		        				<field name='pregnant'/>		        
+		       		        	<field name='next2yrs'/> 
+		        				<field name='morethan2'/>
+		        				<field name='dontknow2'/>
+		        			</group>
+		        			<group  string="5a. What are you doing to try to reduce your partner's HiV risk while trying to get pregnant? Mark all that apply."> 
+		        				<field name='unprotectedsex'/> 
+		        				<field name='takeart'/>
+		        				<field name='prep4partner'/>
+		        				<field name='others_3'/>
+		        			</group>
+		        			<field name='fertility'/>
+		        			<group string="7. In general, what do you think is your risk of giving HIV to your partner?">
+		        				<field name='highrest'/>
+			        			<field name='lowrisk'/>
+		        				<field name='norisk'/>
+		        				<field name='moderaterisk'/>
+		        				<field name='dontknow3'/>
+		        			</group>
+	       			</sheet>
+	       		</form>
+	       	</field>
+       	</record>
+
+       	<record model="ir.ui.view" id="view_enrollment_partnerpreventionpref_search">
+            <field name="name">enrollment index prevention pref</field>
+            <field name="model">enrollment.partnerpreventionpref</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+       	<record id="enrollment_partnerpreventionpref_form_action" model="ir.actions.act_window">
+       		<field name="name">enrollment.partnerpreventionpref.tree</field>
+       		<field name="res_model">enrollment.partnerpreventionpref</field>
+       		<field name="view_type">form</field>
+       		<field name="view_mode">tree,form</field>
+       		<field name="arch" type="xml">
+       			<field name="context">{'search_default_partner_id':active_id}</field>
+       		</field>
+       	</record>
+
+       	<record id="enrollment_partnerpreventionpref_form_view_1" model="ir.ui.view">
+			<field name="name">res.partner.form</field>
+	       	<field name="model">res.partner</field>
+	       	<field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+	       	<field name="arch" type="xml">
+	       		<data>
+	       			<xpath expr="//div[@name='enrollment']" position="inside">
+	       				<button name="%(enrollment_partnerpreventionpref_form_action)d" widget="monetary" context="{'search_default_partner_id':active_id, 'duration':1.0}" string="Partner Prevention Preference Questionnaire" type="action"/>
+	       			</xpath>
+	       		</data>
+	        </field>
+    	</record>
+    </data> 
+</openerp>

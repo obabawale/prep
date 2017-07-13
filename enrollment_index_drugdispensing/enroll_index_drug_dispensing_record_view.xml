@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="enroll_index_drugdispensing_record_tree_view" model="ir.ui.view">
+        	<field name="name">enroll.index.drugdispensing.record.tree</field>
+        	<field name="model">enroll.index.drugdispensing.record</field>
+        	<field name="arch" type="xml">
+        		<tree string="Index Drug Dispensing Record">
+                    <field name='enrollment_id'/>
+                    <field name="visitdate"/>
+        			<field name="partner_id"/>
+            		<field name="arv_national"/>
+            		<field name="arv_where"/>
+            	</tree>
+        	</field>
+        </record>
+    
+        <record id="enroll_index_drugdispensing_record_form_view" model="ir.ui.view">
+        	<field name="name">enroll.index.drugdispensing.record.form</field>
+        	<field name="model">enroll.index.drugdispensing.record</field>
+        	<field name="arch" type="xml">
+        		<form string="Index Drug Dispensing Record" version="8.0">
+        			<sheet string="Index Drug Dispensing Record" version="8.0">
+        				<group>                            
+    					    <field name="visitdate"/>
+                            <field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name='enrollment_id'/>
+                        </group>
+                        <div>                      
+        					<span><label for="arv_national" class="oe_inline"/><field name="arv_national" class="oe_inline"/>if no, end of form</span>
+                        </div>
+                        <div>
+	    					<span><label for="participant_on_arv" class="oe_inline"/><field name='participant_on_arv' class="oe_inline"/>if no, end of form</span>
+                        </div>
+                        <group>
+	    					<field name='arv_where'/>
+	    					<field name='offsite'/>
+	    				</group>	    					
+						<group string='3. Is the participant being offered ARVs today?'>
+						 	<field name='arv_onsite'/>
+                    		<field name='ref_offsite'/>
+                        </group>
+                        <div>
+                    		<span><label for="not_offered" class="oe_inline"/><field name='not_offered' class="oe_inline"/>if yes, end of form</span>
+                        </div>
+                        <group>
+                            <field name='explain_not_offered'/>
+                            <field name='others_explain'/>
+                        </group>
+                    	
+            			<group string='4 Did the participant accept ARVs? Mark all that apply.'>          			
+                            <field name='accepted_on_site'/>
+                            <field name='declined_on_site'/>
+                            <field name='accepted_referral'/>
+                            <field name='declined_referral'/>
+                        </group>
+                        <group>
+                        	<field name='list_arvs'/>                                                
+                        	<field name='comments'/>
+                        </group>		
+	       			</sheet>
+        		</form>
+       		</field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_enroll_index_drugdispensing_record_search">
+            <field name="name">Index Drug Dispensing Record</field>
+            <field name="model">enroll.index.drugdispensing.record</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="enroll_index_drugdispensing_record_form_action" model="ir.actions.act_window">
+            <field name="name">Index Drug Dispensing Record</field>
+            <field name="res_model">enroll.index.drugdispensing.record</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="enroll_index_drugdispensing_record_form_view_1" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='enrollment']" position="inside">
+                        <button name="%(enroll_index_drugdispensing_record_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Index Drug Dispensing Record" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

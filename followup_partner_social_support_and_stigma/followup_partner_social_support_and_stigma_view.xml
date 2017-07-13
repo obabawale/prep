@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_partner_social_support_and_stigma_tree_view" model="ir.ui.view">
+        <field name="name">followuppartner.socialsupport.tree</field>
+        <field name="model">followuppartner.socialsupport</field>
+        <field name="arch" type="xml">
+        <tree string="Follow up Partner Social Support and Stigma">
+            <field name='visit_date'/>
+            <field name='getvisit'/>
+            <field name='getadvice'/>
+            <field name='getchances'/>
+        </tree>    
+        </field>
+        </record>
+    
+        <record id="followup_partner_social_support_and_stigma_form_view" model="ir.ui.view">
+            <field name="name">followuppartner.socialsupport.form</field>
+            <field name="model">followuppartner.socialsupport</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name='visit_date'/>
+                            </group>
+                            <group string="Now I am going to ask you some questions about the support you receive from others. Thinking about your current situation, for each of the following ten statements, please respond as much as I would like; less than I would like; much less than I would like; or never.">
+                            <field name='getvisit'/>
+                            <field name='getadvice'/>
+                            <field name='getchances'/>
+                            <field name='gettotalk'/>
+                            <field name='havepeople'/>
+                            <field name='getlove'/>
+                            <field name='getsupport'/>
+                            <field name='gethelp'/>
+                            <field name='gettransport'/>
+                            <field name='helpsick'/>
+                            <field name='relyfina'/>
+                            <field name='relyemot'/>
+                            </group>
+                            <group string="This section deals with feelings you might have if you were to acquire HIV, despite taking the anti-HIV medications. We would like to know what you think regardless of whether these things would actually happen. Please tell me if you strongly agree; agree; disagree; or strongly disagree with the following four statements.">
+                            <field name='losefriends'/>
+                            <field name='disownme'/>
+                            <field name='anoutcast'/>
+                            <field name='getsacked'/>
+                        </group>                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_partner_social_support_and_stigma_search">
+            <field name="name">Partner Social Support and Stigma</field>
+            <field name="model">followuppartner.socialsupport</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_partner_social_support_and_stigma_form_action" model="ir.actions.act_window">
+            <field name="name">Partner Social Support and Stigma</field>
+            <field name="res_model">followuppartner.socialsupport</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_partner_social_support_and_stigma_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_partner_social_support_and_stigma_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Partner Social Support and Stigma" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

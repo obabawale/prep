@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followuppartner_drugdispensing_tree_view" model="ir.ui.view">
+        <field name="name">followuppartner.drugdispensing.tree</field>
+        <field name="model">followuppartner.drugdispensing</field>
+        <field name="arch" type="xml">
+        <tree string="Follow up Partner Discordance and Relationship Satisfaction Scale Correction">
+            <field name=""/>
+         </tree>   
+        </field>
+        </record>
+    
+        <record id="followuppartner_drugdispensing_form_view" model="ir.ui.view">
+            <field name="name">followuppartner.drugdispensing.form</field>
+            <field name="model">followuppartner.drugdispensing</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                        <field name="partner_id"/>
+                        <field name="sceening_id"/>
+                        <field name="visitdate"/>
+                        </group>
+                        <group string="Partner Study Drug Dispensing Record. Document bottle and tablet return and dispensing information below."/>
+                        <group>
+                            <field name="neveraccepted"/>
+                            <field name='enrolment'/>
+                            <field name='retbottles'/>
+                            <field name='retpills'/>
+                            <field name='leftpills'/>
+                        </group>        
+                        <group string="Bottle Dispensing">
+                            <field name='disbottles'/>
+                        </group>
+                        <group>
+                            <field name='whynodispense'/>
+                            <field name='memsno'/>
+                        </group>
+                        <separator string='Items 4-8a are not completed at Enrollment. At Enrollment, end of form.'/>
+                        <group>
+                            <field name='mems_data_upload'>If yes, Go to item 5.</field>
+                        </group>
+                        <div>
+                            <p>
+                                a Why not?
+                            </p>
+                            <div class='oe_inline'><label for='lost'/><field name='lost'/></div>
+                            <div class='oe_inline'><label for='malfunctioning'/><field name='malfunctioning'/></div>
+                            <div class='oe_inline'><label for='mems_others'/><field name='mems_others'/></div>
+                        </div>
+
+                        <group>
+                            <field name='replacement_cap'>If no, go to item 6.</field>
+                            <field name='cap_number'></field>
+                        </group>
+                        <div>
+                            <p>
+                                b Reason dispensed:
+
+                            </p>
+                            <div class='oe_inline'><label for='reason_dispensed_lost'/><field name='reason_dispensed_lost'/></div>
+                            <div class='oe_inline'><label for='reason_dispensed_malfunction'/><field name='reason_dispensed_malfunction'/></div>
+                            <div class='oe_inline'><label for='reason_dispensed_Others'/><field name='reason_dispensed_Others'/></div>
+                        </div>
+                        <group>
+                            <field name='cap_returned'>Go to item 7.</field>
+                            <field name='returned_cap_no'></field>
+                        </group>
+
+                        <separator string='Items 7-8a are interviewer-administered questions and should be read aloud directly as written.'/>
+                        <div>
+                            <p class='oe_inline'><strong>
+                                7. Since the last visit, how many times have you or someone else opened your special medication bottle without taking any tablets out of it?
+                            </strong></p>
+                            <field name='med_bottle_open' class='oe_inline'/>
+                        </div>
+                        <div>
+                            <p class='oe_inline'><strong>
+                                8 Since the last visit, how many times have you taken more than one tablet out of your special medication bottle at a time?
+                            </strong></p>
+                            <field name='taken_more_tablet' class='oe_inline'/>If 0, end of form.
+                        </div>
+                        <div>
+                            <p class='oe_inline'><strong>
+                                8a Since the last visit, how many extra tablets in total have you taken out of your special medication bottle? Do not include the tablet taken out to be used that day.
+                            </strong></p>
+                            <field name='extra_tablets' class='oe_inline'/>
+                        </div>    
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followuppartner_drugdispensing_search">
+            <field name="name">Followup Partner Discordance and Relationship Satisfaction Scale Correction</field>
+            <field name="model">followuppartner.drugdispensing</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followuppartner_drugdispensing_form_action" model="ir.actions.act_window">
+            <field name="name">Followup Partner Discordance and Relationship Satisfaction Scale Correction</field>
+            <field name="res_model">followuppartner.drugdispensing</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followuppartner_drugdispensing_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followuppartner_drugdispensing_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Partner Drug Dispensing Record" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

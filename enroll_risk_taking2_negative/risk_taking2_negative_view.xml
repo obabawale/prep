@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       <record id="risk_taking_tree_view" model="ir.ui.view">
+        <field name="name">risk.taking2.negative.tree</field>
+        <field name="model">risk.taking2.negative</field>
+        <field name="arch" type="xml">
+        <tree>
+          <field name="enrollment_id"/>
+          <field name="visitdate"/>
+          <field name="a"/>
+          <field name="b"/>
+        </tree>
+        </field>
+        </record>
+
+        <record id="risk_taking_form_view" model="ir.ui.view">
+    		<field name="name">risk.taking2.negative.form</field>
+       		<field name="model">risk.taking2.negative</field>
+       		<field name="arch" type="xml">
+       			<form string="Risk Taking Behaviours 2 HIV Negative">
+       				<sheet>
+                <div style="text-align:center;">
+                        <h2>Risk Taking Behaviours 2 HIV Negative</h2>
+                    </div>
+                    <br/>
+                    <br/>
+       					<group>
+                  <field name="partner_id"/>
+                  <field name="enrollment_id"/>
+       						<field name="visitdate"/>
+       					</group>
+       					    <group>
+				       		<field name="Imagine"/>
+				       		</group>
+				       		<group string="2. I will ask you several questions about the chance that certain events are going to happen. I would like you to use this scale that goes from 0 to 100 to indicate the chance that the event occurs. If you chose 0, this means that you are sure that the event will not occur. The higher the number you chose is, the more likely is the event to happen. For example if you answer 50, it means that it is just as likely that the event happens as it does not happen (fifty-fifty). If you indicate a number below 50 it means that the event has more chances to not happen than to happen. If you indicate a number greater than 50 it means that the event has more chances to happen than to not happen. If you answer 100, it means you are certain that the event will occur.">
+				       		</group>
+                  <div>
+                    <center>
+                        <img src="/enroll_risk_taking2_negative/static/img/nacabar.png" style="width:600;height:300;"/> 
+                    </center>
+                  </div>                       
+				       		<group>
+				       		         <field name="a"/>
+                            <field name="b"/>
+                            <field name="c"/>
+                            <field name="d"/>
+                            <field name="e"/>
+                            <field name="f"/>
+                            <field name="g"/>
+                            <field name="h"/>
+                            <field name="i"/>
+                            <field name="j"/>
+                            <field name="k"/>
+                            <field name="l"/>
+                            <field name="m"/>
+       					    </group>
+       				</sheet>
+       			</form>	       		
+	       	</field>
+       </record>
+
+        <record model="ir.ui.view" id="view_risk_taking_search">
+            <field name="name">Risk Taking Behaviours 2 HIV Negative</field>
+            <field name="model">risk.taking2.negative</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="risk_taking_form_action" model="ir.actions.act_window">
+            <field name="name">Risk Taking Behaviour 2 HIV Negative</field>
+            <field name="res_model">risk.taking2.negative</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="risk_taking_form_view_1" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='enrollment']" position="inside">
+                        <button name="%(risk_taking_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Risk Taking Behaviours 2 HIV Negative" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

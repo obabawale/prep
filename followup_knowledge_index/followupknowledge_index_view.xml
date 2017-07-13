@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_followupknowledge_index_tree" model="ir.ui.view">
+            <field name="name">followupknowledge.index.tree</field>
+            <field name="model">followupknowledge.index</field>
+            <field name="arch" type="xml">
+                <tree string="HIV Knowledge Index">
+                    <field name="intercourse"/>
+                    <field name="transfusion"/>
+                    <field name="unborn"/>
+                    <field name="toilets"/>
+                    <field name="objects"/>
+                </tree>
+            </field>
+        </record>
+    
+        <record id="view_followupknowledge_index_form" model="ir.ui.view">
+        <field name="name">followupknowledge.index.form</field>
+        <field name="model">followupknowledge.index</field>
+        <field name="arch" type="xml">
+            <form string="HIV Knowledge Index" version="8.0">
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="sceening_id"/>
+                        <field name="visitdate"/>
+                    </group>
+                    <div>
+                        <h3>
+                            1. Do you think you can get HIV infection by … ?
+                        </h3>
+                        <div>
+                            <label for="intercourse" class='oe_inline'/><field name="intercourse" class='oe_inline'/>
+                        </div>
+                        <div>
+                            <label for="transfusion" class='oe_inline'/><field name="transfusion" class='oe_inline'/>
+                        </div>
+                        <div>
+                            <label for="unborn" class='oe_inline'/><field name="unborn" class='oe_inline'/>
+                        </div>
+                        <div>
+                            <label for="toilets" class='oe_inline'/><field name="toilets" class='oe_inline'/>
+                        </div>
+                        <div>
+                            <label for="objects" class='oe_inline'/><field name="objects" class='oe_inline'/>
+                        </div>
+                        <div>
+                            <label for="needles" class='oe_inline'/><field name="needles" class='oe_inline'/>
+                        </div>
+                        <div>
+                            <label for="food" class='oe_inline'/><field name="food" class='oe_inline'/>
+                        </div>
+                        <div>
+                            <label for="utensils" class='oe_inline'/><field name="utensils" class='oe_inline'/>
+                        </div>
+                        <div>
+                            <label for="bitten" class='oe_inline'/><field name="bitten" class='oe_inline'/>
+                        </div>
+                        <div>
+                            <label for="witchcraft" class='oe_inline'/><field name="witchcraft" class='oe_inline'/>
+                        </div>
+                        <div>
+                            <label for="kissing" class='oe_inline'/><field name="kissing" class='oe_inline'/>
+                        </div>
+                        <div>
+                            <label for="hugging" class='oe_inline'/><field name="hugging" class='oe_inline'/>
+                        </div>
+                    </div>
+                    <group string="2. Do you think you can avoid being infected by your partner by … ?">
+                        <field name="sharp"/>
+                        <field name="praying"/>
+                        <field name="abstaining"/>
+                        <field name="condom"/>
+                        <field name="antibiotics"/>
+                        <field name="protection"/>
+                        <field name="nothing"/>
+                        <field name="circumcision"/>
+                        <field name="PrEPeveryday"/>
+                        <field name="PrEPtime"/>
+                    </group>
+                <newline/>
+                </sheet>
+            </form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_followupknowledge_index_search">
+            <field name="name">HIV Knowledge Index</field>
+            <field name="model">followupknowledge.index</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_followupknowledge_index_form">
+            <field name="name">HIV Knowledge Index</field>
+            <field name="res_model">followupknowledge.index</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_followupknowledge_index_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(action_followupknowledge_index_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="HIV Knowledge Index" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_knowldgepartner_tree_view" model="ir.ui.view">
+            <field name="name">followup.knowldgepartner.tree</field>
+            <field name="model">followup.knowldgepartner</field>
+            <field name="arch" type="xml">
+                <tree string="Follow up Knowledge Partner">
+                    <field name='visit_date'/>
+                    <field name='sexualintercourse'/>
+                    <field name='bloodtransfusion'/>
+                </tree>            
+            </field>
+        </record>
+    
+        <record id="followup_knowldgepartner_form_view" model="ir.ui.view">
+            <field name="name">followup.knowldgepartner.form</field>
+            <field name="model">followup.knowldgepartner</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group string="1. Do you think you can get HIV infection by … ?">
+                                <field name="partner_id"/>
+                                <field name="sceening_id"/>
+                                <field name='visit_date'/>
+                                <field name='sexualintercourse'/>
+                                <field name='bloodtransfusion'/>
+                                <field name='mothertochild'/>
+                                <field name='sharingtoilet'/>
+                                <field name='sharingobject'/>
+                                <field name='sharingneedles'/>
+                                <field name='sharingfood'/>
+                                <field name='sharingutensil'/>
+                                <field name='mosquitobite'/>
+                                <field name='witchcraft'/>
+                                <field name='kissing'/>    
+                            </group>
+                            <group string="2. Do you think you can avoid being infected by your partner by … ?">
+                                <field name='hugging'/>
+                                <field name='avoidsharing'/>
+                                <field name='praying'/>
+                                <field name='abstfromsex'/>
+                                <field name='usingcondom'/>
+                                <field name='useantibiotics'/>
+                                <field name='traditionalheal'/>
+                                <field name='doingnothin'/>
+                                <field name='circumcision'/>
+                                <field name='takingprep'/>
+                                <field name='preptimetotime'/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_knowldgepartner_search">
+            <field name="name">Followup Knowledge Partner</field>
+            <field name="model">followup.knowldgepartner</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_knowldgepartner_form_action" model="ir.actions.act_window">
+            <field name="name">Followup Knowledge Partner</field>
+            <field name="res_model">followup.knowldgepartner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_knowldgepartner_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_knowldgepartner_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Followup Knowledge Partner" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

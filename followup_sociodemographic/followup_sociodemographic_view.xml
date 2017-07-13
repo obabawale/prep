@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_sociodemographic_tree_view" model="ir.ui.view">
+        <field name="name">followup.sociodemographic.tree</field>
+        <field name="model">followup.sociodemographic</field>
+        <field name="arch" type="xml">
+        <tree string="Socio-demographic Update">
+            <field name='visit_date'/>
+            <field name='movedresidence'/>
+            <field name='owntv'/>
+            <field name='ownacell'/>
+        </tree>            
+        </field>
+        </record>
+    
+        <record id="followup_sociodemographic_form_view" model="ir.ui.view">
+            <field name="name">followup.sociodemographic.form</field>
+            <field name="model">followup.sociodemographic</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="sceening_id"/>
+                        <field name='visit_date'/>
+                        <field name='movedresidence'/>
+                        <field name='owntv'/>
+                        <field name='ownacell'/>
+                    </group>
+                    <group string="4 What was the primary source of income for the participant's household during the past year?">
+                        <field name='noincome'/>
+                        <field name='laborer'/>
+                        <field name='trade'/>
+                        <field name='student'/>
+                        <field name='profession'/>
+                        <field name='farming'/>
+                        <field name='housewife'/>
+                        <field name='otherspecify'/>
+                        </group>
+                        <group string="5   How long did it take the participant to travel from home to the clinic today?">
+                            <field name='lessthan30'/>
+                            <field name='thirty'/>
+                            <field name='onetotwo'/>
+                            <field name='morethan2'/>
+                        </group>
+                        <group string='6   What was the mean of transport used to travel to the facility?'>
+                            <field name='walk'/>
+                            <field name='bus'/>
+                            <field name='taxi'/>
+                            <field name='bicycle'/>
+                            <field name='perbike'/>
+                            <field name='percar'/>
+                        </group>
+                        <group>
+                            <field name='amount'/>
+                            <field name='losetime'/>
+                            <field name='disclose'/>
+                            </group>                             
+                                <group string='a To whom has their discordant status been disclosed? Mark all that apply.'>
+                                    <field name='children'/>
+                                    <field name='partner'/>
+                                    <field name='indpartpar'/>
+                                    <field name='commleader'/>
+                                    <field name='otherfam'/>
+                                    <field name='partparfrnd'/>
+                                    <field name='pastor'/>
+                                    <field name='other'/>
+                                </group>
+                                <group string='b Have there been any adverse effects of the disclosure? Mark all that apply.'>
+                                    <field name='noadvers'/>
+                                    <field name='maritaldis'/>
+                                    <field name='lossofhous'/>
+                                    <field name='famdiscord'/>
+                                    <field name='lossofjob'/>
+                                    <field name='physiviol'/>
+                                    <field name='otherspec'/>
+                                </group>
+                                                    
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_sociodemographic_search">
+            <field name="name">Socio-demographic Update</field>
+            <field name="model">followup.sociodemographic</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_sociodemographic_form_action" model="ir.actions.act_window">
+            <field name="name">Socio-demographic Update</field>
+            <field name="res_model">followup.sociodemographic</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_sociodemographic_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_sociodemographic_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Socio-demographic Update" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

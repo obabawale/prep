@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_prep_tree_view" model="ir.ui.view">
+        <field name="name">followup.prep.tree</field>
+        <field name="model">followup.prep</field>
+        <field name="arch" type="xml">
+        <tree string="PrEP Stop Questionnaire">
+            <field name="visit_date"/>
+            <field name='beenusing'/>
+            <field name='artuse'/>
+         </tree>   
+        </field>
+        </record>
+    
+        <record id="followup_prep_form_view" model="ir.ui.view">
+            <field name="name">followup.prep.form</field>
+            <field name="model">followup.prep</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name='visit_date'/>
+                            </group>
+                            <group>
+                                <field name='beenusing'/>
+                            </group>
+                            <group>
+                                <field name='artuse'/>
+                                </group>
+                                <group string='2a. Why not? Mark all that apply.'>
+                                    <field name='vloadntsupp'/>
+                                    <field name='longerartuse'/>
+                                    <field name='preppreg'/>
+                                    <field name='fertdesire'/>
+                                    <field name='outpartner'/>
+                                    <field name='notadherent'/>
+                                    <field name='nottakenprep'/>
+                                    <field name='other'/>
+                                </group>
+                            <group string='Items 3-9 are interviewer-administered questions, and should be read aloud directly as written.'>
+                            </group>
+                            <group string='Why do you think you are stopping PrEP?'>
+                                <field name='onarvsnow'/>
+                                <field name='other2'/>
+                            </group>
+                            <group>
+                                <field name='stopprep'/>
+                            </group>
+                            <group>
+                                <field name='stoporstay'/>
+                            </group>
+                            <group>
+                                <field name='moreconc'/>
+                            </group>
+                            <group>
+                                <field name='mreoften'/>
+                            </group>
+                            <group>
+                                <field name='moreoften'/>
+                            </group>
+                            <group>
+                                <field name='verypoor'/>
+                            </group>                      
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_prep_search">
+            <field name="name">PrEP Stop Questionnaire</field>
+            <field name="model">followup.prep</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_prep_form_action" model="ir.actions.act_window">
+            <field name="name">PrEP Stop Questionnaire</field>
+            <field name="res_model">followup.prep</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_prep_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_prep_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="PrEP Stop Questionnaire" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

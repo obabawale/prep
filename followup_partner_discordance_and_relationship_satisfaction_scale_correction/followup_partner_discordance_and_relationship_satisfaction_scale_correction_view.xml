@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_partnerdiscordance_tree_view" model="ir.ui.view">
+        <field name="name">followup.partnerdiscordance.tree</field>
+        <field name="model">followup.partnerdiscordance</field>
+        <field name="arch" type="xml">
+            <tree string="Follow up Partner Discordance and Relationship Satisfaction Scale Correction">
+                <field name='visit_date'/>
+                <field name='howdifficult'/>
+                <field name='challenge'/>
+                <field name='managing'/>
+            </tree>
+            </field>
+        </record>
+    
+        <record id="followup_partnerdiscordance_form_view" model="ir.ui.view">
+            <field name="name">followup.partnerdiscordance.form</field>
+            <field name="model">followup.partnerdiscordance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name='visit_date'/>
+                            <field name='howdifficult'/>
+                            <field name='challenge'/>
+                            <field name='managing'/>
+                            <field name='separation'/>
+                            <field name='verbaldisagree'/>
+                            <field name='goingwell'/>
+                            <field name='confidein'/>
+                            <field name='everregret'/>
+                            <field name='quarrel'/>
+                            <field name='upset'/>
+                            <field name='affectionate'/>
+                        </group>
+                        <separator string="The boxes on the following line represent different degrees of happiness in your partnership. The middle point, “happy”, represents the degree of happiness of most partnerships. Please mark the box which best describes the degree of happiness, all things considered of your partnership."/>
+                        <group string="12">
+                            <field name='exunhappy'/>
+                            <field name='funhappy'/>
+                            <field name='aliunhappy'/>
+                            <field name='unhappy'/>
+                            <field name='vhappy'/>
+                            <field name='exhappy'/>
+                            <field name='perfect'/>
+                        </group>
+                        <separator string="This section deals with feelings you might have if you were to acquire HIV, despite taking the anti-HIV medications. We would like to know what you think regardless of whether these things would actually happen. Please tell me if you strongly agree; agree; disagree; or strongly disagree with the following four statements."/>
+                        <group string="13   Rate your feelings about the future of your partnership.">
+                            <field name='goanylength'/>
+                            <field name='doallican'/>
+                            <field name='willdofair'/>
+                            <field name='cantdomuch'/>
+                            <field name='refusetodo'/>
+                            <field name='neversucceed'/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_couple_eligibility_search">
+            <field name="name">Followup Partner Discordance and Relationship Satisfaction Scale Correction</field>
+            <field name="model">followup.partnerdiscordance</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_partnerdiscordance_form_action" model="ir.actions.act_window">
+            <field name="name">Followup Partner Discordance and Relationship Satisfaction Scale Correction</field>
+            <field name="res_model">followup.partnerdiscordance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_partnerdiscordance_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_partnerdiscordance_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Followup Partner Discordance and Relationship Satisfaction Scale Correction" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_saferconception_tree_view" model="ir.ui.view">
+        <field name="name">followup.saferconception.tree</field>
+        <field name="model">followup.saferconception</field>
+        <field name="arch" type="xml">
+        <tree string="Safer Conception">
+            <field name="visit_date"/>
+            <field name="malecircum"/>
+            <field name="artifiinsem"/>
+            <field name="spermwash"/>
+            <field name="selfinsem"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="followup_saferconception_form_view" model="ir.ui.view">
+            <field name="name">followup.saferconception.form</field>
+            <field name="model">followup.saferconception</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                        <field name="partner_id"/>
+                        <field name="sceening_id"/>
+                        <field name="visit_date"/>
+                        </group>
+                        <group string="1. What things can couples do to reduce risk when trying to conceive a baby?">
+                                <field name="malecircum"/>
+                                <field name="artifiinsem"/>
+                                <field name="spermwash"/>
+                                <field name="selfinsem"/>
+                                <field name="usecondoms"/>
+                                <field name="usePrEP"/>
+                                <field name="useARVs"/>
+                                <field name="treatSTI"/>
+                                <field name="commen"/>
+                                <field name="none"/>
+                            </group>
+                            <group string="2. What things would you be willing to do to reduce risk when trying to conceive a baby?">
+                                <field name="2malecircum"/>
+                                <field name="2artifiinsem"/>
+                                <field name="2spermwash"/>
+                                <field name="2selfinsem"/>
+                                <field name="2usecondoms"/>
+                                <field name="2usePrEP"/>
+                                <field name="2useARVs"/>
+                                <field name="2treatSTI"/>
+                                <field name="2commen"/>
+                                <field name="2none"/>
+                            </group>
+                            <group string="3. What things would your partner be willing to do to reduce risk when trying to conceive a baby?">
+                                <field name="3malecircum"/>
+                                <field name="3artifiinsem"/>
+                                <field name="3spermwash"/>
+                                <field name="3selfinsem"/>
+                                <field name="3usecondoms"/>
+                                <field name="3usePrEP"/>
+                                <field name="3useARVs"/>
+                                <field name="3treatSTI"/>
+                                <field name="3commen"/>
+                                <field name="3none"/>
+                            </group>
+                            <group string="4. What things have you done to reduce risk when trying to conceive a baby?">
+                                <field name="4malecircum"/>
+                                <field name="4artifiinsem"/>
+                                <field name="4spermwash"/>
+                                <field name="4selfinsem"/>
+                                <field name="4usecondoms"/>
+                                <field name="4usePrEP"/>
+                                <field name="4useARVs"/>
+                                <field name="4treatSTI"/>
+                                <field name="4commen"/>
+                                <field name="4none"/>
+                            </group>
+                            <group string="I am going to read some statements about HIV and pregnancy. For each statement, please tell me if you think it is &quot;True&quot;, &quot;False&quot;, or if you &quot;Don&apos;t Know&quot;. If you do not know, that is OK. Many people have not been counseled or taught about this information. Please do not guess.">
+                                <field name="babyHIV"/>
+                                <field name="transmit"/>
+                                <field name="redchances"/>
+                                <field name="mancircum"/>
+                                <field name="fertile"/>
+                                <field name="fromsemen"/>
+                                <field name="uninfected"/>
+                                <field name="negative"/>
+                                <field name="withoutcond"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_saferconception_search">
+            <field name="name">Safer Conception</field>
+            <field name="model">followup.saferconception</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_saferconception_form_action" model="ir.actions.act_window">
+            <field name="name">Safer Conception</field>
+            <field name="res_model">followup.saferconception</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_saferconception_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_saferconception_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Safer Conception" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

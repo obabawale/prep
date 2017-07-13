@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="viewlogs_reportableadverse_tree" model="ir.ui.view">
+        <field name="name">logs.reportableadverse.tree</field>
+        <field name="model">logs.reportableadverse</field>
+        <field name="arch" type="xml">
+        <tree string="Reportable Adverse Event Log">
+            <field name="adverse"/>
+            <field name="onset"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="viewlogs_reportableadverse_form" model="ir.ui.view">
+        <field name="name">logs.reportableadverse.form</field>
+        <field name="model">logs.reportableadverse</field>
+        <field name="arch" type="xml">
+        <form string="Reportable Adverse Event Log" version="8.0">
+        <sheet>
+        <separator string="Reportable Adverse Event Log"/>
+        <group>
+        <field name="partner_id"/>
+        <field name="sceening_id"/>
+        <field name="visitdate"/>
+        </group>
+        <group string="Visit Month associated with the violation:">
+            <field name="adverse"/>
+            <field name="onset"/>
+            <field name="reported"/>
+        </group>
+        <group string="4. Severity: See instructions.">
+            <field name="grade1"/>
+            <field name="grade2"/>
+            <field name="grade3"/>
+            <field name="grade4"/>
+            <field name="death1"/>
+        </group>
+        <group string="5. Relationship to study medication">
+            <field name="definitely"/>
+            <field name="probablyrelated"/>
+            <field name="possibly"/>
+            <field name="probablynot"/>
+            <field name="Pending"/>
+            <field name="notrelated"/>
+        </group>
+        <group string="6. Study medication administration">
+            <field name="notapplicable"/>
+            <field name="temporarily"/>
+            <field name="permanently"/>
+            <field name="continuing"/>
+        </group> 
+        <group string="7. Status or outcome of AE">
+            <field name="continuing"/>
+            <field name="continuingat"/>
+            <field name="resolved"/>
+            <field name="death2"/>
+            <field name="severity"/>
+        </group>
+        <group string="8. Treatment">
+            <field name="none"/>
+            <field name="procedure"/>
+            <field name="prolongedhospitalization"/>
+            <field name="medication"><span>Report on Partner Concomitant Meds Log</span></field>
+            <field name="others"/>
+        </group>
+        <group string="Type of event">
+            <field name="SAE"/>
+            <field name="AE"><span>If AE, end of form</span></field>
+        </group>
+        <group string="9. Type of SAE event: Mark all that apply">
+            <field name="death3"/>
+            <field name="hospitalization"/>
+            <field name="disability"/>
+            <field name="lifethreatening"/>
+            <field name="intervention"/>
+            <field name="congenital"/>
+        </group>
+        <newline />
+        </sheet>
+        </form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_logs_reportableadverse_search">
+            <field name="name">Reportable Adverse Event Log</field>
+            <field name="model">logs.reportableadverse</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="actionlogs_reportableadverse_form">
+            <field name="name">Reportable Adverse Event Log</field>
+            <field name="res_model">logs.reportableadverse</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="viewlogs_reportableadverse_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='logs']" position="inside">
+                        <button name="%(actionlogs_reportableadverse_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Reportable Adverse Event Log" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

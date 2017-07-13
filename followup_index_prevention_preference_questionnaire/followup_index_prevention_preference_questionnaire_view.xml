@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followupindex_preferquestionnaire_tree_view" model="ir.ui.view">
+        <field name="name">followupindex.preferquestionnaire.tree</field>
+        <field name="model">followupindex.preferquestionnaire</field>
+        <field name="arch" type="xml">
+        <tree string="Follow up Index Prevention Preference Questionnaire">
+            <field name="bewilling"/>
+         </tree>   
+        </field>
+        </record>
+    
+        <record id="followupindex_preferquestionnaire_form_view" model="ir.ui.view">
+            <field name="name">followupindex.preferquestionnaire.form</field>
+            <field name="model">followupindex.preferquestionnaire</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                         <separator string="Index Physical Examination"/>
+                         <group>
+                        <field name="partner_id"/>
+                        <field name="sceening_id"/>
+                        <field name="visitdate"/>
+                        </group>
+                        <group>
+                        <field name="bewilling"/>
+                        </group>
+                        <separator string="What fears or concerns do you have about starting ARVs? Mark all that apply."/>
+                        <group>
+                        <field name="noconcerns"/>
+                        <field name="notwilling"/>
+                        <field name="takingARVs"/>
+                        <field name="sideeffects"/>
+                        <field name="pillburden"/>
+                        <field name="imaybe"/>
+                        <field name="concernsabout"/>
+                        <field name="resistancemay"/>
+                        <field name="others"/>
+                        </group>
+                        <group string="If you could start on ARVs or your partner could take PrEP, which would you prefer for HIV prevention?">
+                        <field name="startonARVs"/>
+                        <field name="havemypartner"/>
+                        </group>
+                        <group string="Why would you prefer to? (Insert response from item 2.) Mark all that apply">
+                        <field name="ARVswill"/>
+                        <field name="mypartner"/>
+                        <field name="mypartnercan"/>
+                        <field name="ARVsare"/>
+                        <field name="ishoulddo"/>
+                        <field name="betterfor"/>
+                        <field name="others2"/>
+                        </group>
+                        <group>
+                        <field name="howmany"/>
+                        </group>
+                        <group string="When do you plan to have your next child?">
+                        <field name="currentlytrying"/>
+                        <field name="currentlypregnant"/>
+                        <field name="withinthe"/>
+                        <field name="Dontknow"/>
+                        </group>
+                        <group string="What are you doing to try to reduce your partner’s HIV risk while trying to get pregnant? Mark all that apply.">
+                        <field name="timedunprotected"/>
+                        <field name="takeART"/>
+                        <field name="PrEPfor"/>
+                        <field name="others3"/>
+                        </group>
+                        <group>
+                        <field name="haveyoudiscussed"/>
+                        </group>
+                        <group string="In general, what do you think is your risk of giving HIV to your partner?">
+                        <field name="highrisk"/>
+                        <field name="moderaterisk"/>
+                        <field name="lowrisk"/>
+                        <field name="norisk"/>
+                        <field name="dontknow2"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followupindex_preferquestionnaire_search">
+            <field name="name">Followup Index Prevention Preference Questionnaire</field>
+            <field name="model">followupindex.preferquestionnaire</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followupindex_preferquestionnaire_form_action" model="ir.actions.act_window">
+            <field name="name">Followup Index Prevention Preference Questionnaire</field>
+            <field name="res_model">followupindex.preferquestionnaire</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followupindex_preferquestionnaire_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followupindex_preferquestionnaire_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Followup Index Prevention Preference Questionnaire" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_indexmedical_tree_view" model="ir.ui.view">
+        <field name="name">followup.indexmedical.tree</field>
+        <field name="model">followup.indexmedical</field>
+        <field name="arch" type="xml">
+        <tree string="Follow-up Index Medical History">
+            <field name="stage_1"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="followup_indexmedical_form_view" model="ir.ui.view">
+            <field name="name">followup.indexmedical.form</field>
+            <field name="model">followup.indexmedical</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name="visitdate"/>
+                        </group>
+                		<group string="Indicate the most advanced WHO stage">
+                            <field name="stage_1"/>
+                            <field name="stage_2"/>
+                            <field name="stage_3"/>
+                            <field name="stage_4"/>
+                        </group>
+                        <group>
+                            <field name="HIV_care"/>
+                        </group>
+                        <div>
+                            <label for="beentoosick"/><field name="beentoosick" class='oe_inline'/>If no go to 4
+                            <label for="days_missed"/><field name="days_missed" class='oe_inline'/>
+                        </div>
+                        <group>
+                            <field name="bednetsincevisit"/>
+                            <field name="ARVssincelastvisit"/>
+                        </group>
+                        <div>
+                        	<div>
+                            	<label for="treatment"/><field name="treatment" class='oe_inline'/>If no go to 5d
+                            </div>
+                            <div>
+                            	<label for="for_pmtct"/><field name="for_pmtct" class='oe_inline'/>If no go to 5d
+                            </div>
+                            <div>
+                            	<label for="datestarted"/><field name="datestarted" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="arvlist"/><field name="arvlist" class='oe_inline'/>
+                            </div>                            
+                        </div>
+                        <div>
+                        	<p>
+                        		<span>
+                           			<strong>
+                            			6. Why is the participant not taking ARVs?
+                            		</strong>
+                            			Mark all that apply
+                            	</span>
+                            </p>
+                        	<div>
+                            	<label for="not_eligible"/><field name="not_eligible" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="stigma"/><field name="stigma" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="feel_heathy"/><field name="feel_heathy" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="fears"/><field name="fears" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="notsupportive"/><field name="notsupportive" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="no_slots"/><field name="no_slots" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="said_not_eligible"/><field name="said_not_eligible" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="difficult_adherence"/><field name="difficult_adherence" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="pre-treatment_processing"/><field name="pre-treatment_processing" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="transport_cost"/><field name="transport_cost" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="newly_diagnosed"/><field name="newly_diagnosed" class='oe_inline'/>
+                            </div>
+                            <div>
+                            	<label for="others"/><field name="others" class='oe_inline'/>                            
+                            </div>                            	
+                        </div>
+                        <group>
+                        	<field name="co-trimoxazole"/>                            
+                        </group>
+                        <div>
+                        	<p>
+                        		<span>
+                           			<strong>
+                            			6a. Reasons for taking co-trimoxazole?
+                            		</strong>
+                            			Mark all that apply
+                            	</span>
+                            </p>
+                        	<label for="prophylaxis"/><field name="prophylaxis" class='oe_inline'/>
+                            <label for="pcp_treatment"/><field name="pcp_treatment" class='oe_inline'/>
+                            <label for="toxo_treatment"/><field name="toxo_treatment" class='oe_inline'/>
+                            <label for="otherspecify"/><field name="otherspecify" class='oe_inline'/>
+                        </div>
+                        <group>
+                            <field name="isoniazid"/>
+                            <field name="tb_treatment"/>
+                        </group>
+                        <div>    
+                        	<label for="participant_pregnant"/><field name="participant_pregnant" class='oe_inline'/>If yes, complete pregnancy report
+                        </div>
+                        <group>
+                        	<field name="participant_circumcised"/>
+                        </group>                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_followup_indexmedical_search">
+            <field name="name">Followup Index Medical History</field>
+            <field name="model">followup.indexmedical</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+        
+        
+
+        <record id="followup_indexmedical_form_action" model="ir.actions.act_window">
+            <field name="name">Followup Index Medical History</field>
+            <field name="res_model">followup.indexmedical</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_indexmedical_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_indexmedical_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Index Followup Medical History" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

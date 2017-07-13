@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="enrollment_partnerphysicalexamination_tree_view" model="ir.ui.view">
+            <field name="name">enrollment.partnerphysicalexamination.tree</field>
+            <field name="model">enrollment.partnerphysicalexamination</field>
+            <field name="arch" type="xml">
+                <tree string="Partner Physical Examination">
+                    <field name="enrollment_id"/>
+                     <field name="visitdate"/>
+                    <field name="height"/>
+                    <field name="weight"/>
+                    <field name="temperature"/>
+                </tree>            
+            </field>
+        </record>
+    
+        <record id="enrollment_partnerphysicalexamination_form_view" model="ir.ui.view">
+            <field name="name">enrollment.partnerphysicalexamination.form</field>
+            <field name="model">enrollment.partnerphysicalexamination</field>
+            <field name="arch" type="xml">
+            <form string="Partner Physical Examination" version="8.0">
+                <sheet string="Partner Physical Examination" version="8.0">
+                       <group>
+                            <field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name="enrollment_id"/>
+                            <field name="visitdate"/>
+                            </group>
+
+                            <div><h4><span class='oe_inline'>1. Height (Enrollment only)  <field name="height" class='oe_inline'/>    cm</span></h4></div>
+                        <div><h4><span class='oe_inline'>2. Weight  <field name="weight" class='oe_inline'/>    kg</span></h4></div>
+                        <div><h4><span class='oe_inline'>3. Temperature  <field name="temperature" class='oe_inline'/>    <sup>O</sup>C</span></h4></div>
+                        <div><h4><span class='oe_inline'>4. Blood pressure  <field name="bloodpressure" class='oe_inline'/>    mgHg</span></h4></div>
+                        <div><h4><span class='oe_inline'>5. Respiratory rate  <field name="resprate" class='oe_inline'/>     /min</span></h4></div>
+                        <div><h4><span class='oe_inline'>6. Pulse rate  <field name="pulserate" class='oe_inline'/>      /min</span></h4></div>
+                            <group string="Syndromic Diagnosis">
+                                <field name="gud"/>
+                            </group>
+
+                            <group string="Items 8-10 are for women only">
+                                <field name="vaginitis"/>
+                                <field name="cervicitis"/>
+                                <field name="pelvic"/>
+                            </group>
+                            
+                            <group string="Items 11-12 are for men only">
+                                <field name="urethritis"/>
+                                <field name="circumcision_status"/>                               
+                            </group>
+                            
+                            <group string="STI Treatment">
+                                <field name="treatforgen"/>
+                                <field name="list"/>
+                            </group>
+
+                            <div><h3>14. Physical Signs <br/>Oral abnormalities: Mark all that apply</h3></div>
+                            <group>
+                                <field name="gingivitis"/>
+                            </group>
+                            <div><label for='thrush'/><field name="thrush"/>Not eligible</div>
+                            <group><field name="ulcer"/></group>
+                            <div><label for='oralhair'/><field name="oralhair"/>Not eligible</div>
+                            <div><label for='kaposi'/><field name="kaposi"/>Not eligible</div>
+                            <group><field name="others"/></group>                            
+                            
+                            <group>
+                            	<field name="tenderness"/>
+                            	<field name="hepatomegaly"/>
+                            	<field name="splenomegaly"/>
+                            	<field name="jaundice"/>
+                            	<field name="peripheral"/>
+                            	<field name='othersigns'/>
+                            	<field name='specifysigns'/>                            	
+                            </group>
+
+                            <div><h3>21 rashes: <i>Mark all that apply</i></h3></div>
+                            <group>
+                                <field name="zoster"/>
+                                <field name='urticaria'/>
+                                <field name="macular"/>
+                                <field name="lesions"/>
+                                <field name="others_2"/>
+                            </group>                            
+                            
+                            <div><label for='lymphenlarg' class='oe_inline'/><field name="lymphenlarg" class='oe_inline'/>If no, End of form</div>
+                            <group>
+                                <field name="site_of_lymphnode"/>
+                                <field name="specify"/>
+                            </group>
+                            <div><h4><span class='oe_inline'>b. size of lymph node  <field name="lymphnode" class='oe_inline'/>    cm</span></h4></div>               
+                </sheet>
+            </form>
+            </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_enrollment_partnerphysicalexamination_search">
+            <field name="name">Partner Physical Examination</field>
+            <field name="model">enrollment.partnerphysicalexamination</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="enrollment_partnerphysicalexamination_form_action" model="ir.actions.act_window">
+            <field name="name">Partner Physical Examination</field>
+            <field name="res_model">enrollment.partnerphysicalexamination</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="enrollment_partnerphysicalexamination_form_view_1" model="ir.ui.view" >
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='enrollment']" position="inside">
+                        <button name="%(enrollment_partnerphysicalexamination_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Partner Physical Examination" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

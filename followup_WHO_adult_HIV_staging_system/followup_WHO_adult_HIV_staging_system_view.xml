@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_who_tree_view" model="ir.ui.view">
+        <field name="name">followup.who.tree</field>
+        <field name="model">followup.who</field>
+        <field name="arch" type="xml">
+        <tree string="WHO Adult HIV Staging System">
+            <field name='visit_date'/>
+            <field name="asymptotic"/>
+            <field name="lymphadenopathy"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="followup_who_form_view" model="ir.ui.view">
+            <field name="name">followup.who.form</field>
+            <field name="model">followup.who</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name='visit_date'/>
+                            </group>
+                        <group string="Instructions: Mark all that apply. A participant's WHO Stage cannot decrease. For example, once a participant has reached Stage 3, the participant's stage cannot ever again be Stage 1 or 2."/>
+                        <group string="WHO Adult Stage 1">
+                            <field name="asymptotic"/>
+                            <field name="lymphadenopathy"/>
+                        </group>
+                        <group string="WHO Adult Stage 2">
+                            <field name="weightloss"/>
+                            <field name="mucocutaneous"/>
+                            <field name="herpes"/>
+                            <field name="upperrespiratory"/>
+                        </group>
+                        <group string="WHO Adult Stage 3">
+                            <field name="presumedloss"/>
+                            <field name="bacterialinfections"/>
+                            <field name="chronicdiarrhea"/>
+                            <field name="ptb"/>
+                            <field name="prolongedfever"/>
+                            <field name="ohl"/>
+                            <field name="thrush"/>
+                            <field name="stomatitis"/>  
+                            <field name="unexplainedanemia"/>
+                        </group>
+                        <group string="WHO Adult Stage 4">
+                            <field name="severeweightloss"/>
+                            <field name="chronicorolabial"/>
+                            <field name="encephalopathy"/>
+                            <field name="cervicalcarcinoma"/>
+                            <field name="CNSlymphoma"/>
+                            <field name="endemicmycosis"/>
+                            <field name="leukoencephalopathy"/> 
+                            <field name="candidiasis"/>
+                            <field name="cryptosporidiosis"/>
+                            <field name="cytomegalovirus"/>
+                            <field name="mycobacterialinfection"/>
+                            <field name="toxoplasmosis"/>
+                            <field name="cardiomyopathy"/>
+                            <field name="cryptococcosis"/>
+                            <field name="severebacterial"/>
+                            <field name="septicaemia"/>
+                            <field name="pneumocystis"/>
+                            <field name="eptb"/>
+                            <field name="Kaposissarcoma"/>
+                            <field name="leishmaniasis"/>                       
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_who_search">
+            <field name="name">WHO Adult HIV Staging System</field>
+            <field name="model">followup.who</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_who_form_action" model="ir.actions.act_window">
+            <field name="name">WHO Adult HIV Staging System</field>
+            <field name="res_model">followup.who</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_who_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_who_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="WHO Adult HIV Staging System" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

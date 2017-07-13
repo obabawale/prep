@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="followup_partner_medical_history_tree_view" model="ir.ui.view">
+        <field name="name">followuppartner.medicalhistory.tree</field>
+        <field name="model">followuppartner.medicalhistory</field>
+        <field name="arch" type="xml">
+        <tree string="Follow up Partner Medical History">
+        	<field name="visitdate"/>
+            <field name="partner_id"/>
+            <field name="sceening_id"/>            
+         </tree>   
+        </field>
+        </record>
+    
+        <record id="followup_partner_medical_history_form_view" model="ir.ui.view">
+            <field name="name">followuppartner.medicalhistory.form</field>
+            <field name="model">followuppartner.medicalhistory</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="Follow up Partner Medical History">                    	
+                        <group>
+                        	<field name="visitdate"/>
+                            <field name="partner_id" string='Screening ID'/>
+                            <field name="sceening_id"/>
+                        </group>
+
+
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+				           <div class="col-xs-12">
+				           		<strong>
+				           			Partner Follow up Medical History
+				           		</strong>
+				           		<em>
+				           			Items 1-19 are interviewer-administered questions and should be read aloud directly as written
+				           		</em>
+				           	</div>
+				        </div>
+
+                        
+                        <!-- TABLE HEADER -->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                            <!-- FIRST ROW OF THE TABLE HEADER -->
+                            <div>
+                                <div class="col-xs-4">
+                                    <strong>
+                                        In the past 60 days, have you experienced any of the following?
+                                    </strong>
+                                </div>
+    				            <div class="col-xs-1"><strong>Yes</strong></div>
+    				            <div class="col-xs-1"><strong>No</strong></div>
+    				            <div class="col-xs-2"><strong>Don’t know</strong></div>
+    				            <div class="col-xs-2"><strong>If yes, for how many days?</strong></div>
+    				            <div class="col-xs-2"><strong>Ongoing</strong></div>
+				            </div>
+
+                            <!-- SECOND ROW OF THE TABLE HEADER -->
+                            <div class="row">
+                                <div class="col-xs-2 col-xs-offset-8"><strong>No of Days</strong></div>
+                                <div class="col-xs-1 col-xs-offset-10"><strong>Yes</strong></div>
+                                <div class="col-xs-1 col-xs-offset-11"><strong>No</strong></div>
+                            </div>
+                        </div>
+
+				        <!-- FIRST ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+				           <div class="col-xs-4">1. Fever</div>
+				           <div class="col-xs-1"><field name="fever_yes"/></div>
+				           <div class="col-xs-1"><field name="fever_no"/></div>
+				           <div class="col-xs-2"><field name="fever_dont_know"/></div>
+				           <div class="col-xs-2"><field name="fever_no_of_days"/></div>
+				           <div class="col-xs-1"><field name="fever_ongoing_yes"/></div>
+				           <div class="col-xs-1"><field name="fever_ongoing_no"/></div>
+				        </div>
+
+                        <!-- SECOND ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">2. Fatigue</div>
+                           <div class="col-xs-1"><field name="fatigue_yes"/></div>
+                           <div class="col-xs-1"><field name="fatigue_no"/></div>
+                           <div class="col-xs-2"><field name="fatigue_dont_know"/></div>
+                           <div class="col-xs-2"><field name="fatigue_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="fatigue_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="fatigue_ongoing_no"/></div>
+                        </div>
+
+                        <!-- THIRD ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">3. Sore Throat</div>
+                           <div class="col-xs-1"><field name="soreThroat_yes"/></div>
+                           <div class="col-xs-1"><field name="soreThroat_no"/></div>
+                           <div class="col-xs-2"><field name="soreThroat_dont_know"/></div>
+                           <div class="col-xs-2"><field name="soreThroat_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="soreThroat_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="soreThroat_ongoing_no"/></div>
+                        </div>
+
+                        <!-- FOURTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">4. Rash</div>
+                           <div class="col-xs-1"><field name="rash_yes"/></div>
+                           <div class="col-xs-1"><field name="rash_no"/></div>
+                           <div class="col-xs-2"><field name="rash_dont_know"/></div>
+                           <div class="col-xs-2"><field name="rash_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="rash_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="rash_ongoing_no"/></div>
+                        </div>
+
+                        <!-- FIFTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">5. Headache</div>
+                           <div class="col-xs-1"><field name="headache_yes"/></div>
+                           <div class="col-xs-1"><field name="headache_no"/></div>
+                           <div class="col-xs-2"><field name="headache_dont_know"/></div>
+                           <div class="col-xs-2"><field name="headache_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="headache_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="headache_ongoing_no"/></div>
+                        </div>
+
+                        <!-- SIXTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">6. Short Breath</div>
+                           <div class="col-xs-1"><field name="short_breath_yes"/></div>
+                           <div class="col-xs-1"><field name="short_breath_no"/></div>
+                           <div class="col-xs-2"><field name="short_breath_dont_know"/></div>
+                           <div class="col-xs-2"><field name="short_breath_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="short_breath_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="short_breath_ongoing_no"/></div>
+                        </div>
+
+                        <!-- SEVENTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">7. Abdominal Pain</div>
+                           <div class="col-xs-1"><field name="abdominal_pain_yes"/></div>
+                           <div class="col-xs-1"><field name="abdominal_pain_no"/></div>
+                           <div class="col-xs-2"><field name="abdominal_pain_dont_know"/></div>
+                           <div class="col-xs-2"><field name="abdominal_pain_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="abdominal_pain_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="abdominal_pain_ongoing_no"/></div>
+                        </div>
+
+                        <!-- EIGHTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">8. Nausea</div>
+                           <div class="col-xs-1"><field name="nausea_yes"/></div>
+                           <div class="col-xs-1"><field name="nausea_no"/></div>
+                           <div class="col-xs-2"><field name="nausea_dont_know"/></div>
+                           <div class="col-xs-2"><field name="nausea_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="nausea_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="nausea_ongoing_no"/></div>
+                        </div>
+
+                        <!-- NINETH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">9. Vomiting</div>
+                           <div class="col-xs-1"><field name="vomiting_yes"/></div>
+                           <div class="col-xs-1"><field name="vomiting_no"/></div>
+                           <div class="col-xs-2"><field name="vomiting_dont_know"/></div>
+                           <div class="col-xs-2"><field name="vomiting_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="vomiting_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="vomiting_ongoing_no"/></div>
+                        </div>
+
+                        <!-- TENTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">10. Diarrhea</div>
+                           <div class="col-xs-1"><field name="diarrhea_yes"/></div>
+                           <div class="col-xs-1"><field name="diarrhea_no"/></div>
+                           <div class="col-xs-2"><field name="diarrhea_dont_know"/></div>
+                           <div class="col-xs-2"><field name="diarrhea_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="diarrhea_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="diarrhea_ongoing_no"/></div>
+                        </div>
+
+                        <!-- ELEVENTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">11. Excessive intestinal gas</div>
+                           <div class="col-xs-1"><field name="excess_intestinalgas_yes"/></div>
+                           <div class="col-xs-1"><field name="excess_intestinalgas_no"/></div>
+                           <div class="col-xs-2"><field name="excess_intestinalgas_dont_know"/></div>
+                           <div class="col-xs-2"><field name="excess_intestinalgas_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="excess_intestinalgas_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="excess_intestinalgas_ongoing_no"/></div>
+                        </div>
+
+                        <!-- TWELFTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">12. Increased or decreased urinary output</div>
+                           <div class="col-xs-1"><field name="urinary_output_yes"/></div>
+                           <div class="col-xs-1"><field name="urinary_output_no"/></div>
+                           <div class="col-xs-2"><field name="urinary_output_dont_know"/></div>
+                           <div class="col-xs-2"><field name="urinary_output_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="urinary_output_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="urinary_output_ongoing_no"/></div>
+                        </div>
+
+                        <!-- THIRTEENTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">13. Muscle weakness or pain</div>
+                           <div class="col-xs-1"><field name="muscle_weakness_yes"/></div>
+                           <div class="col-xs-1"><field name="muscle_weakness_no"/></div>
+                           <div class="col-xs-2"><field name="muscle_weakness_dont_know"/></div>
+                           <div class="col-xs-2"><field name="muscle_weakness_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="muscle_weakness_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="muscle_weakness_ongoing_no"/></div>
+                        </div>
+
+                        <!-- FOURTEENTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">14. Swelling of the feet</div>
+                           <div class="col-xs-1"><field name="swelling_feet_yes"/></div>
+                           <div class="col-xs-1"><field name="swelling_feet_no"/></div>
+                           <div class="col-xs-2"><field name="swelling_feet_dont_know"/></div>
+                           <div class="col-xs-2"><field name="swelling_feet_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="swelling_feet_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="swelling_feet_ongoing_no"/></div>
+                        </div>
+
+                        <!-- FIFTEENTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">15. Joint pain</div>
+                           <div class="col-xs-1"><field name="joint_pain_yes"/></div>
+                           <div class="col-xs-1"><field name="joint_pain_no"/></div>
+                           <div class="col-xs-2"><field name="joint_pain_dont_know"/></div>
+                           <div class="col-xs-2"><field name="joint_pain_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="joint_pain_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="joint_pain_ongoing_no"/></div>
+                        </div>
+
+                        <!-- SIXTEENTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">16. Bone pain</div>
+                           <div class="col-xs-1"><field name="bone_pain_yes"/></div>
+                           <div class="col-xs-1"><field name="bone_pain_no"/></div>
+                           <div class="col-xs-2"><field name="bone_pain_dont_know"/></div>
+                           <div class="col-xs-2"><field name="bone_pain_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="bone_pain_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="bone_pain_ongoing_no"/></div>
+                        </div>
+
+                        <!-- SEVENTEENTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">17. Bone fracture</div>
+                           <div class="col-xs-1"><field name="bone_fracture_yes"/></div>
+                           <div class="col-xs-1"><field name="bone_fracture_no"/></div>
+                           <div class="col-xs-2"><field name="bone_fracture_dont_know"/></div>
+                           <div class="col-xs-2"><field name="bone_fracture_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="bone_fracture_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="bone_fracture_ongoing_no"/></div>
+                        </div>
+
+                        <!-- EIGHTEENTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">18. Numbness or tingling in your hands or feet</div>
+                           <div class="col-xs-1"><field name="numbness_yes"/></div>
+                           <div class="col-xs-1"><field name="numbness_no"/></div>
+                           <div class="col-xs-2"><field name="numbness_dont_know"/></div>
+                           <div class="col-xs-2"><field name="numbness_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="numbness_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="numbness_ongoing_no"/></div>
+                        </div>
+
+                        <!-- NINETEENTH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">19. Others</div>
+                           <div class="col-xs-1"><field name="others_yes"/></div>
+                           <div class="col-xs-1"><field name="others_no"/></div>
+                           <div class="col-xs-2"><field name="others_dont_know"/></div>
+                           <div class="col-xs-2"><field name="others_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="others_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="others_ongoing_no"/></div>
+                        </div>
+
+                        <!-- TWENTIETH ROW IN THE TABLE'S BODY-->
+                        <div class="row mt32" style="col-xs-12; border: 1px solid #568eff;">
+                           <div class="col-xs-4">20. <em>Male only:</em> Since the last visit, has the participant been circumcised? </div>
+                           <div class="col-xs-1"><field name="circumcised_yes"/></div>
+                           <div class="col-xs-1"><field name="circumcised_no"/></div>
+                           <div class="col-xs-2"><field name="circumcised_dont_know"/></div>
+                           <div class="col-xs-2"><field name="circumcised_no_of_days"/></div>
+                           <div class="col-xs-1"><field name="circumcised_ongoing_yes"/></div>
+                           <div class="col-xs-1"><field name="circumcised_ongoing_no"/></div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_followup_partner_medical_history_search">
+            <field name="name">Followup Partner Medical History</field>
+            <field name="model">followuppartner.medicalhistory</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="followup_partner_medical_history_form_action" model="ir.actions.act_window">
+            <field name="name">Followup Partner Medical History</field>
+            <field name="res_model">followuppartner.medicalhistory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="followup_partner_medical_history_form_view_2" model="ir.ui.view"> 
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(followup_partner_medical_history_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id,'default_duration': 1.0}" string="Followup Partner Medical History" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_screening_demographics_tree" model="ir.ui.view">
+        <field name="name">screening.demographics.tree</field>
+        <field name="model">screening.demographics</field>
+        <field name="arch" type="xml">
+        <tree string="Screening Demographics">
+            <field name="dateofbirth"/>
+            <field name="gender"/>
+            <field name="respondentmarried"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="view_screening_demographics_form" model="ir.ui.view">
+        <field name="name">screening.demographics.form</field>
+        <field name="model">screening.demographics</field>
+        <field name="arch" type="xml">
+        <form string="Screening Demographics" version="8.0">
+        <sheet>
+        <separator string="Screening Demographics"/>
+        <group>
+        <field name="partner_id"/>
+        <field name="sceening_id"/>
+        <field name="visitdate"/>
+        </group>
+        <group string="Screening Demographics">
+            <field name="dateofbirth"/>
+            <field name="age"/>
+            <field name="gender"/>
+            <field name="respondentmarried"/>
+            <field name="beenmarried"/>
+        </group>
+        <group string="5. IF MALE: What is the rank of the wife’s respondent among his co-wives?
+                       IF FEMALE: What is the rank of the respondent among her co-wives?">
+            <field name="co-wife"/>
+            <field name="firstwife"/>
+            <field name="secondwife"/>
+            <field name="thirdwife"/>
+        </group>
+        <group >
+            <field name="areyou"/>
+            <field name="doyou"/>
+            <field name="livingtogether"/>
+            <field name="livingchildren"/>
+            <field name="childrenthat"/>
+            <field name="childrendoes"/>
+            <field name="morechildren"/>
+            <field name="havesex"/>
+            <field name="hivstatus"/>
+            <field name="ethnicgroup"/>
+        </group>
+        <group>
+            <field name="highesteducation"/>
+        </group>
+        <group >
+            <field name="monthlyincome"/>
+        </group>
+        <group string="16. In the respondent’s house">
+            <field name="electricity"/>
+            <field name="television"/>
+            <field name="refrigerator"/>
+            <field name="runningwater"/>
+            <field name="concretecement"/>
+            <field name="sleep"/>
+            <field name="household"/>
+            <field name="mobile"/>
+            <field name="rooms"/>
+            <field name="peoplelive"/>
+        </group>
+        <group>
+            <field name="occupation"/>
+            <field name="oother2"/>
+        </group>
+        <group string="18. Who usually makes decisions regarding your health?">
+            <field name="myself"/>
+            <field name="mypartner"/>
+            <field name="someoneelse"/>
+        </group>
+	<group>
+	    <field name="permission"/>
+	</group>
+         <group>
+            <field name="manybottles"/>
+        </group>
+        <newline />
+        </sheet>
+        </form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_screening_demographics_search">
+            <field name="name">Screening Demographics</field>
+            <field name="model">screening.demographics</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_screening_demographics_form">
+            <field name="name">Screening Demographics</field>
+            <field name="res_model">screening.demographics</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_screening_demographics_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='screening']" position="inside">
+                        <button name="%(action_screening_demographics_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Screening Demographics" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

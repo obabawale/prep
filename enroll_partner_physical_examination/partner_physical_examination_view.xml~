@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="enrollment_partnerphysicalexamination_tree_view" model="ir.ui.view">
+            <field name="name">enrollment.partnerphysicalexamination.tree</field>
+            <field name="model">enrollment.partnerphysicalexamination</field>
+            <field name="arch" type="xml">
+                <tree string="Partner Physical Examination">
+                     <field name="visitdate"/>
+                    <field name="height"/>
+                    <field name="weight"/>
+                    <field name="temperature"/>
+                </tree>            
+            </field>
+        </record>
+    
+        <record id="enrollment_partnerphysicalexamination_form_view" model="ir.ui.view">
+            <field name="name">enrollment.partnerphysicalexamination.form</field>
+            <field name="model">enrollment.partnerphysicalexamination</field>
+            <field name="arch" type="xml">
+            <form string="Partner Physical Examination" version="8.0">
+                <sheet string="Partner Physical Examination" version="8.0">
+                       <group>
+                            <field name="partner_id"/>
+                            <field name="sceening_id"/>
+                            <field name="visitdate"/>
+                            <field name="height"/>
+                            <field name="weight"/>
+                            <field name="temperature"/>
+                            <field name="bloodpressure"/>
+                            <field name="resprate"/>
+                            <field name="pulserate"/>
+                            </group>
+                            <group string="Syndromic Diagnosis">
+                                <field name="gud"/>
+                            </group>
+
+                            <group string="Items 8-10 are for women only">
+                                <field name="vaginitis"/>
+                                <field name="cervicitis"/>
+                                <field name="pelvic"/>
+                            </group>
+                            
+                            <group string="Items 11-12 are for men only">
+                                <field name="urethritis"/>
+                                <group>
+                                    <field name="fullycircum"/>
+                                    <field name="partiallycircum"/>
+                                    <field name="notcircum"/>
+                                </group>
+                            </group>
+                            
+                            <group string="STI Treatment">
+                                <field name="treatforgen"/>
+                                <field name="list"/>
+                            </group>
+
+                            <group string="Physical Signs">
+                                <group string="Oral abnormalities: Mark all that apply"/>
+                                <field name="gingivitis"/>
+                                <field name="thrush"/>
+                                <field name="ulcer"/>
+                                <field name="oralhair"/>
+                                <field name="kaposi"/>
+                                <field name="others"/>
+                            </group>
+                            
+                            <group>
+                            	<field name="tenderness"/>
+                            	<field name="hepatomegaly"/>
+                            	<field name="splenomegaly"/>
+                            	<field name="jaundice"/>
+                            	<field name="peripheral"/>
+                            	<field name='othersigns'/>
+                            	<field name='specifysigns'/>                            	
+                            </group>
+
+                            <group string="rashes: Mark all that apply">
+                                <field name="zoster"/>
+                                <field name='urticaria'/>
+                                <field name="macular"/>
+                                <field name="lesions"/>
+                                <field name="others_2"/>
+                            </group>
+                            
+                            <group>
+                                <field name="lymphenlarg"/>
+                                <field name="cervical"/>
+                                <field name="inguinal"/>
+                                <field name="auxillary"/>
+                                <field name="other_3"/>
+                                <field name="lymphnode"/>
+                            </group>               
+                </sheet>
+            </form>
+            </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_enrollment_partnerphysicalexamination_search">
+            <field name="name">Partner Physical Examination</field>
+            <field name="model">enrollment.partnerphysicalexamination</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="enrollment_partnerphysicalexamination_form_action" model="ir.actions.act_window">
+            <field name="name">Partner Physical Examination</field>
+            <field name="res_model">enrollment.partnerphysicalexamination</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="enrollment_partnerphysicalexamination_form_view_1" model="ir.ui.view" >
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='enrollment']" position="inside">
+                        <button name="%(enrollment_partnerphysicalexamination_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Partner Physical Examination" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

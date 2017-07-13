@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="enrollment_indexenrollment_tree_view" model="ir.ui.view">
+        	<field name="name">enrollment.indexenrollment.tree</field>
+        	<field name="model">enrollment.indexenrollment</field>
+        	<field name="arch" type="xml">
+        		<tree string="Index Enrollment">
+        		<field name="enrollment_id"/>
+                <field name="visitdate"/>
+                <field name="meeteligibility"/>
+                <field name="signdate"/>
+                </tree>     
+        	</field>
+        </record>
+    
+        <record id="enrollment_indexenrollment_form_view" model="ir.ui.view">
+	        <field name="name">enrollment.indexenrollment.form</field>
+	        <field name="model">enrollment.indexenrollment</field>
+	        <field name="arch" type="xml">
+		        <form string="Index Enrollment" version="8.0">
+			        <sheet>
+			        	<group>
+			                <field name="partner_id"/>
+			                <field name="sceening_id"/>
+			                <field name="enrollment_id"/>
+			                <field name="visitdate"/>
+			            </group>
+			            <group>
+			                <field name="eligibility_criteria"/>
+			                <field name="designee_name"/>
+                            <field name="date_signed" />
+			            </group>
+			            <group>
+			    			<field name="meeteligibility"/>
+			    			<field name="signdate"/>
+			    			<field name="protocolversion"/>
+			    			<field name="specimen"/>
+			    			<field name="storagedate"/>
+			    			<field name="iddate"/>
+			    			<field name="pregnant"/>
+			    			<field name="arvtoday"/>			    			
+			    			<field name="partofferedarvatenrollment"/>
+			    			<field name='explain_why_not_offered'/>
+			    		</group>
+		    			<div>
+		    				<h3>
+		    					b. Did the participant accept ARVs at Enrollment? Mark all that apply.
+		    				</h3>
+		    				<label for="acceptonsite"/><field name="acceptonsite"/>
+		    				<label for="deconsite"/><field name="deconsite"/>
+		    				<label for="others"/><field name="others"/>
+		    				<label for="accref"/><field name="accref"/>
+		    				<label for="decrefer"/><field name="decrefer"/>			    				
+		    			</div>
+		    			<group>
+			    			<field name="descp"/>
+			    		</group>
+			        </sheet>
+		        </form>
+	        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_enrollment_indexenrollmentsearch">
+            <field name="name">Index Enrollment</field>
+            <field name="model">enrollment.indexenrollment</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="enrollment_indexenrollment_form_action" model="ir.actions.act_window">
+            <field name="name">Index Enrollment</field>
+            <field name="res_model">enrollment.indexenrollment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record id="enrollment_indexenrollment_form_view_1" model="ir.ui.view" >
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='enrollment']" position="inside">
+                        <button name="%(enrollment_indexenrollment_form_action)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Index Enrollment Checklist" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>

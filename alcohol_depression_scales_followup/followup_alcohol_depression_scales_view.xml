@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_alcohol_depression_tree" model="ir.ui.view">
+        <field name="name">followup.alcoholdepression.tree</field>
+        <field name="model">followup.alcoholdepression</field>
+        <field name="arch" type="xml">
+        <tree string="Alcohol and Depression Scales">
+            <field name="visitdate"/>
+            <field name="feelingafterdrinking"/>
+            <field name="remember"/>
+            <field name="failedbecauseofdrinking"/>
+            <field name="firstgetup"/>
+        </tree>
+        </field>
+        </record>
+    
+        <record id="view_alcohol_depression_form" model="ir.ui.view">
+        <field name="name">followup.alcoholdepression.form</field>
+        <field name="model">followup.alcoholdepression</field>
+        <field name="arch" type="xml">
+        <form string="Alcohol and Depression Scale" version="8.0">
+        <sheet string="Alcohol and Depression Scales">
+        <separator string="Alcohol and Depression Scales"/>
+        <group>
+            <field name="partner_id"/>
+            <field name="sceening_id"/>
+            <field name="visitdate"/>
+        </group>
+        <separator string="Alcohol and Depression Scales These are interviewer-administered questions and should be read aloud directly as written"/>
+ 	<separator string="Now I&apos;m going to ask you about your alcohol use in the past year. While some of this information may be embarrassing or difficult to remember, please try to give your best answers and be as honest as possible."/>       
+	<group>
+            <field name="feelingafterdrinking"/>
+            <field name="remember"/>
+            <field name="failedbecauseofdrinking"/>
+            <field name="firstgetup"/>
+        </group>
+        <separator string="The next set of questions are a list of problems that people can get. These questions are about how you have been feeling during the past week. For each item, please let me know if you have felt this or experienced this not at all; a little; quite a bit; or extremely."/>
+        <group string="Symptoms">
+	    <field name="lowinenergy"/>
+            <field name="blamingyourself"/>
+            <field name="cryingeasily"/>
+            <field name="feelingfidgety"/>
+            <field name="poorappetite"/>
+            <field name="stayingasleep"/>
+            <field name="feelinghopeless"/>
+            <field name="feelingsad"/>
+            <field name="feelinglonely"/>
+            <field name="endingyourlife"/>
+            <field name="worryingtoomuch"/>
+            <field name="feelingnointerest"/>
+            <field name="feelingeverything"/>
+            <field name="feeling_wortless"/>
+            <field name="lossofsexual"/>
+            <field name="dontcare"/>
+            <field name="sexsafe"/>
+        </group>
+        <newline />
+        </sheet>
+        </form>
+        </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_alcohol_depression_search">
+            <field name="name">Alcohol and Depression Scales</field>
+            <field name="model">followup.alcoholdepression</field>
+            <field name="arch" type="xml">
+                <search string="Clients" version="8.0">
+                    <field name="partner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_alcohol_depression_form">
+            <field name="name">Alcohol and Depression Scales</field>
+            <field name="res_model">followup.alcoholdepression</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_partner_id': active_id}</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_alcohol_depression_form1">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="custom_naca.custom_view_fields_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@name='follow-up']" position="inside">
+                        <button name="%(action_alcohol_depression_form)d" widget="monetary" context="{'search_default_partner_id': active_id, 'default_duration': 1.0}" string="Alcohol and Depression Scales" type="action"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>     
+    </data> 
+</openerp>
